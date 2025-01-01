@@ -14,4 +14,19 @@ public class BasicController {
         return "home";
     }
     
+    @GetMapping("/who-we-are")
+    public String getIntroWho() {
+        return "basic/who";
+    }
+
+    @GetMapping("/what-we-do")
+    public String getIntroWhat() {
+        return "basic/what";
+    }
+
+    @GetMapping("/mission-vision")
+    public String getIntroMisVis() {
+        return "basic/mis-vis";
+    }
+    
 }
