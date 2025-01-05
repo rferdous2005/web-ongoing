@@ -32,7 +32,8 @@
 }
 
 .nav-link:hover, 
-.nav-link:focus {
+.nav-link:focus,
+.nav-link.show:focus {
   color: whitesmoke; /* Professional blue on hover */
   background-color: green;
   border-radius: 9px;
@@ -55,7 +56,7 @@
 .dropdown-item:hover, 
 .dropdown-item:focus {
   color: #ffffff;
-  background-color: #39e742; /* Blue background with white text */
+  background-color: green; /* Blue background with white text */
   transform: scale(1.1); /* Zoom effect for dropdown items */
 }
 
