@@ -28,11 +28,14 @@
   text-transform: capitalize;
   font-weight: 500;
   transition: all 0.3s ease;
+  margin-right: 18px;
 }
 
 .nav-link:hover, 
 .nav-link:focus {
-  color: #39e742; /* Professional blue on hover */
+  color: whitesmoke; /* Professional blue on hover */
+  background-color: green;
+  border-radius: 9px;
   transform: scale(1.1); /* Zoom effect on hover */
 }
 
