@@ -1,0 +1,77 @@
+/* header-styles.css */
+
+/* General Navbar Styling */
+.navbar {
+  background-color: #edfafa; /* White background */
+  border-bottom: 2px solid #e5e5e5; /* Light border for professional look */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.navbar-brand {
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-left: 30px; /* Move the BrandName 20px to the right */
+}
+
+.navbar-nav {
+  margin: 0 auto; /* Center the menu items */
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Align items vertically */
+}
+
+.nav-link {
+  color: #555555; /* Neutral color for links */
+  font-size: 1rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover, 
+.nav-link:focus {
+  color: #39e742; /* Professional blue on hover */
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.dropdown-menu {
+  background-color: #ffffff; /* White dropdown */
+  border: 1px solid #e5e5e5; /* Light border */
+  border-radius: 5px; /* Slight rounding for dropdown */
+  transition: all 0.3s ease;
+}
+
+.dropdown-item {
+  color: #555555; /* Neutral color for dropdown items */
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover, 
+.dropdown-item:focus {
+  color: #ffffff;
+  background-color: #39e742; /* Blue background with white text */
+  transform: scale(1.1); /* Zoom effect for dropdown items */
+}
+
+.navbar-toggler {
+  border: none;
+  color: #555555; /* Match the overall style */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='rgba(85, 85, 85, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+/* Hover Effects for Dropdown */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1; /* Ensure dropdown is visible on hover */
+  transform: translateY(0); /* Smooth dropdown appearance */
+}
+
+.dropdown-item:active {
+  background-color: #39e742; /* Darker blue for active */
+}

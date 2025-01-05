@@ -1,0 +1,94 @@
+/* Footer Background */
+.footer {
+  background-color: #000000;
+  padding: 20px; /* Padding for the entire footer */
+  text-align: left; /* Align content to the left */
+}
+
+/* Footer Headings */
+.footer h5.text-head {
+  font-weight: bold;
+  color: #39e742; /* Professional green color for headings */
+  margin-bottom: 10px; /* Space below each heading */
+}
+
+/* Footer Lists */
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0; /* Reduced space between lists */
+}
+
+.footer ul li {
+  margin-bottom: 5px; /* Reduced space between list items */
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+  color: rgba(255, 255, 255, 0.8); /* Default text color */
+  font-size: 15px; /* Set font size */
+}
+
+.footer ul li a {
+  color: inherit; /* Inherit color from li */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Hover Effect for List Items */
+.footer ul li:hover {
+  transform: scale(1.1); /* Zoom effect */
+  color: #40ff70; /* Highlight color on hover */
+}
+
+/* Social Media Icons Section */
+.social-icons {
+  display: flex;
+  gap: 15px; /* Space between icons */
+  margin-top: 15px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1); /* Light background for better visibility */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #39e742; /* Highlight color for hover effect */
+  transform: scale(1.1); /* Slight scaling of the icon's container */
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2); /* Scaling the PNG icon for emphasis */
+  opacity: 0.9; /* Slight fade effect */
+}
+
+/* Button Styling */
+.btn-pink {
+  background-color: #39e742;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-pink:hover {
+  background-color: #39e742;
+  box-shadow: 0 4px 10px rgba(26, 203, 76, 0.5);
+}
+
+/* Footer Bottom Text */
+.footer .text-center {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin-top: 20px; /* Spacing above bottom text */
+}
