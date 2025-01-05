@@ -36,7 +36,7 @@
   color: whitesmoke; /* Professional blue on hover */
   background-color: green;
   border-radius: 9px;
-  transform: scale(1.1); /* Zoom effect on hover */
+  transform: scale(1.2); /* Zoom effect on hover */
 }
 
 .dropdown-menu {
