@@ -1,14 +1,21 @@
 package com.cirt.web.controller;
 
+import java.util.LinkedList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cirt.web.dto.MediaDto;
+import com.cirt.web.entity.Media;
 import com.cirt.web.service.MediaService;
 
 @Controller
@@ -24,15 +31,22 @@ public class AdminController {
     }
     
     @GetMapping("/media")
-    public String getMediapage(Model model) {
+    public String getMediapage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "25") int size, Model model) {
+        Page<Media> mediaListPaged = mediaService.getPaginatedMedias(PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
+        if(mediaListPaged.getTotalElements() == 0) {
+            model.addAttribute("mediaList", new LinkedList<>());
+        } else {
+            model.addAttribute("mediaList", mediaListPaged.getContent());
+        }
         model.addAttribute("media", new MediaDto());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPage", mediaListPaged.getTotalPages());
         return "admin/admin-media";
     }
 
     @PostMapping("/media")
     public String saveFileInfo(@ModelAttribute("media") MediaDto mediaDto) {
         mediaService.addMedia(mediaDto);
-        System.out.println(mediaDto.getFileExtension());
         return "redirect:/admin/media";
     }
 }

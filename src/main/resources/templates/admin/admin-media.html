@@ -29,18 +29,33 @@
 <div class="table-responsive">
   <table class="table table-bordered table-striped table-hover m-4">
     <tr>
-      <th>File Name</th>
-      <th>URL</th>
-      <th>type</th>
+      <th>File Location</th>
+      <th>Creation Time</th>
+      <th>Preview</th>
+      <th>Delete</th>
     </tr>
-    <tr>
-      <td>Jill</td>
-      <td>Smith</td>
-      <td>50</td>
+    <tr th:each="media : ${mediaList}">
+      <td th:text="${media.getFileName()}"></td>
+      <td th:text="${media.getCreatedAt()}">Smith</td>
+      <td>  </td>
+      <td> Delete icon </td>
     </tr>
   </table>
 </div>
-
+<nav>
+  <ul class="pagination">
+      <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+          <a class="page-link" th:href="@{/admin/media(page=${currentPage - 1})}" aria-label="Previous">Previous</a>
+      </li>
+      <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPage - 1)}" 
+          th:classappend="${i == currentPage} ? 'active'">
+          <a class="page-link" th:href="@{/admin/media(page=${i})}" th:text="${i + 1}"></a>
+      </li>
+      <li class="page-item" th:classappend="${currentPage + 1 == totalPage} ? 'disabled'">
+          <a class="page-link" th:href="@{/admin/media(page=${currentPage + 1})}" aria-label="Next">Next</a>
+      </li>
+  </ul>
+</nav>
 <div class="media-upload-container">
   <!--Media Upload Form-->
   <form method="post" th:action="@{/admin/media}" th:object="${media}" enctype="multipart/form-data" class="media-upload-form">

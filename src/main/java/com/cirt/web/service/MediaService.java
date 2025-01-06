@@ -6,6 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cirt.web.dto.MediaDto;
@@ -20,13 +23,17 @@ public class MediaService {
     // @Autowired
     // private Media media;
 
-    private static final String UPLOAD_DIR = "/media-uploads/";
+    @Value("${app.file.location}")
+    private static String UPLOAD_DIR;
 
     public void addMedia(MediaDto mediaDto){
+        String filePath = UPLOAD_DIR + mediaDto.getFileExtension() + "/" + mediaDto.getFileName()+mediaDto.getFileExtension();
         if (!mediaDto.getFile().isEmpty() ) {
             try {
                 byte[] bytes = mediaDto.getFile().getBytes();
-                Path path = Paths.get(UPLOAD_DIR + mediaDto.getFileExtension() + "/" + mediaDto.getFileName()+mediaDto.getFileExtension());
+                filePath = Files.exists(Paths.get(filePath)) ? 
+                mediaDto.getFileExtension() + "/" + mediaDto.getFileName()+"-"+System.currentTimeMillis()/1000000+mediaDto.getFileExtension() : filePath;
+                Path path = Paths.get(filePath);
                 Path p = Files.write(path, bytes);
                 System.out.println(p.getFileName());
             } catch (IOException e) {
@@ -35,10 +42,13 @@ public class MediaService {
         }
 
         Media media = new Media();
-        media.setFileName(mediaDto.getFileName());
+        media.setFileName(filePath);
         media.setFileExtension(mediaDto.getFileExtension());
         media.setDescription(mediaDto.getDescription());
         mediaRepository.save(media);
     }
     
+    public Page<Media> getPaginatedMedias(Pageable pageable) {
+        return mediaRepository.findAll(pageable);
+    }
 }
