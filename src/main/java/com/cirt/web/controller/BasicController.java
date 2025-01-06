@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class BasicController {
     @Value("${app.file.location}")
-    private static String UPLOAD_DIR;
+    private String UPLOAD_DIR;
 
     @GetMapping
     public String getMethodName() {

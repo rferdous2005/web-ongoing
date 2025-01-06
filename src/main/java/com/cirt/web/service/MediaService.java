@@ -24,16 +24,17 @@ public class MediaService {
     // private Media media;
 
     @Value("${app.file.location}")
-    private static String UPLOAD_DIR;
+    private String UPLOAD_DIR;
 
     public void addMedia(MediaDto mediaDto){
-        String filePath = UPLOAD_DIR + mediaDto.getFileExtension() + "/" + mediaDto.getFileName()+mediaDto.getFileExtension();
+        String fullFilePath = UPLOAD_DIR + mediaDto.getFileExtension() + "/" + mediaDto.getFileName()+mediaDto.getFileExtension();
+        String filePath = mediaDto.getFileExtension() + "/" + mediaDto.getFileName()+mediaDto.getFileExtension();
         if (!mediaDto.getFile().isEmpty() ) {
             try {
                 byte[] bytes = mediaDto.getFile().getBytes();
-                filePath = Files.exists(Paths.get(filePath)) ? 
+                filePath = Files.exists(Paths.get(fullFilePath)) ? 
                 mediaDto.getFileExtension() + "/" + mediaDto.getFileName()+"-"+System.currentTimeMillis()/1000000+mediaDto.getFileExtension() : filePath;
-                Path path = Paths.get(filePath);
+                Path path = Paths.get(UPLOAD_DIR+filePath);
                 Path p = Files.write(path, bytes);
                 System.out.println(p.getFileName());
             } catch (IOException e) {
@@ -51,4 +52,15 @@ public class MediaService {
     public Page<Media> getPaginatedMedias(Pageable pageable) {
         return mediaRepository.findAll(pageable);
     }
+
+    // public void deleteMediaById(Integer id) {
+    //     if (id == null) {
+    //         throw new IllegalArgumentException("ID cannot be null.");
+    //     }
+    //     if (mediaRepository.existsById(id)) {
+    //         mediaRepository.deleteById(id);
+    //     } else {
+    //         throw new IllegalArgumentException("Media with ID " + id + " does not exist.");
+    //     }
+    // }
 }
