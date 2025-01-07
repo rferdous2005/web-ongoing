@@ -11,7 +11,7 @@
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
   <script src="/assets/js/drag-drop-upload.js"></script>
-
+  <link rel="stylesheet" th:href="@{/assets/css/admin-header.css}">
 
   <style>
     /* Custom styles (optional) */
@@ -30,29 +30,36 @@
   <div class="table-header">
     <h3>Media Records</h3>
   </div>
+  <button class="btn btn-lg btn-primary m-2 upload-btn" data-bs-toggle="modal" data-bs-target="#media-upload-form">
+    <img src="/assets/images/upload.png" alt="Upload Icon" class="upload-icon">
+    Upload New Media
+  </button>  
   <div class="table-responsive">
     <table class="custom-table">
       <thead>
         <tr>
           <th>File Name</th>
           <th>Created At</th>
+          <th>Preview</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr th:each="media : ${mediaList}">
           <td th:text="${media.getFileName()}"></td>
-          <td th:text="${media.getCreatedAt()}"></td>
+          <td th:text="${#temporals.format(media.getCreatedAt(), 'dd-MM-yyyy - HH:mm:ss')}"></td>
+          <td class="preview-column"></td>
           <td class="action-column">
               <button class="delete-btn">
                   <img src="/assets/images/delete.png" alt="Delete" class="delete-icon">
               </button>
           </td>
-      </tr>
+        </tr>
       </tbody>
     </table>
   </div>
 </div>
+
 
 <nav>
   <ul class="pagination">
@@ -68,40 +75,51 @@
       </li>
   </ul>
 </nav>
-<div class="media-upload-container">
-  <!--Media Upload Form-->
-  <form method="post" th:action="@{/admin/media}" th:object="${media}" enctype="multipart/form-data" class="media-upload-form">
-      <h2>Media Upload Form</h2>
-      
-      <!-- File Name -->
-      <label for="fileName">File Name</label>
-      <input type="text" id="fileName" th:field="*{fileName}" placeholder="Enter file name" required>
-
-      <!-- File Extension Dropdown -->
-      <label for="fileExtension">Select File Extension</label>
-      <select id="fileExtension" th:field="*{fileExtension}" required>
-          <option value=".jpg">.jpg</option>
-          <option value=".png">.png</option>
-          <option value=".svg">.svg</option>
-          <option value=".jpeg">.jpeg</option>
-          <option value=".json">.json</option>
-          <option value=".pdf">.pdf</option>
-          <option value=".docx">.docx</option>
-          <option value=".pptx">.pptx</option>
-      </select>
-
-      <!-- Short Description -->
-      <label for="description">Short Description</label>
-      <textarea id="description" th:field="*{description}" rows="4" placeholder="Enter a short description"></textarea>
-
-      <!-- File Upload -->
-      <label for="fileUpload">Upload File</label>
-      <input type="file" id="fileUpload" th:field="*{file}" required>
-
-      <!-- Submit Button -->
-      <button type="submit" class="submit-btn">Submit</button>
-  </form>
-</div>
+<div class="modal fade" th:id="media-upload-form"
+                    role="dialog" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg ">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="staticBackdropLabel" >Media Upload Form</h3>
+        </div>
+        <div class="modal-body">
+          <div class="media-upload-container">
+            <!--Media Upload Form-->
+            <form method="post" th:action="@{/admin/media}" th:object="${media}" enctype="multipart/form-data" class="media-upload-form">
+                
+                <!-- File Name -->
+                <label for="fileName">File Name</label>
+                <input type="text" id="fileName" th:field="*{fileName}" placeholder="Enter file name" required>
+          
+                <!-- File Extension Dropdown -->
+                <label for="fileExtension">Select File Extension</label>
+                <select id="fileExtension" th:field="*{fileExtension}" required>
+                    <option value=".jpg">.jpg</option>
+                    <option value=".png">.png</option>
+                    <option value=".svg">.svg</option>
+                    <option value=".jpeg">.jpeg</option>
+                    <option value=".json">.json</option>
+                    <option value=".pdf">.pdf</option>
+                    <option value=".docx">.docx</option>
+                    <option value=".pptx">.pptx</option>
+                </select>
+          
+                <!-- Short Description -->
+                <label for="description">Short Description</label>
+                <textarea id="description" th:field="*{description}" rows="4" placeholder="Enter a short description"></textarea>
+          
+                <!-- File Upload -->
+                <label for="fileUpload">Upload File</label>
+                <input type="file" id="fileUpload" th:field="*{file}" required>
+          
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <div th:replace="~{fragments/footer :: footer}"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

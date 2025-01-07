@@ -12,51 +12,31 @@
 <body>
 
 <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light" th:fragment="menu">
+<nav class="custom-navbar navbar-expand-lg navbar-light" th:fragment="menu">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="custom-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/admin/home">Home</a>
+      <ul class="custom-nav ms-auto">
+        <li class="custom-nav-item">
+          <a class="custom-nav-link" aria-current="page" href="/admin/home">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/admin/media">Media</a>
+        <li class="custom-nav-item">
+          <a class="custom-nav-link" aria-current="page" href="/admin/media">Media</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="custom-nav-item">
+          <a class="custom-nav-link" aria-current="page" href="/admin/post">Post</a>
+        </li>
+        <li class="custom-nav-item dropdown">
+          <a class="custom-nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Services
           </a>
-          <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-            <li><a class="dropdown-item" href="/talent-skill-development">Talent & Skill Development</a></li>
-            <li><a class="dropdown-item" href="/training-it-professionals">Training for IT Professionals</a></li>
-            <li><a class="dropdown-item" href="/vapt">VAPT</a></li>
+          <ul class="custom-dropdown-menu" aria-labelledby="servicesDropdown">
+            <li><a class="custom-dropdown-item" href="/talent-skill-development">Talent & Skill Development</a></li>
+            <li><a class="custom-dropdown-item" href="/training-it-professionals">Training for IT Professionals</a></li>
+            <li><a class="custom-dropdown-item" href="/vapt">VAPT</a></li>
           </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Alert & Advisories
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="alertsDropdown">
-            <li><a class="dropdown-item" href="/alerts">Alerts</a></li>
-            <li><a class="dropdown-item" href="/advisories">Advisories</a></li>
-            <li><a class="dropdown-item" href="/bulletin">Bulletin</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            News & Events
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="newsDropdown">
-            <li><a class="dropdown-item" href="/news">News</a></li>
-            <li><a class="dropdown-item" href="/events">Events</a></li>
-            <li><a class="dropdown-item" href="/notices">Notices</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
         </li>
       </ul>
     </div>

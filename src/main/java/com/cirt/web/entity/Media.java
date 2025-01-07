@@ -23,8 +23,13 @@ public class Media {
     private int id;
     private String fileName, fileExtension, description;
 
+    // Automatically set the creation timestamp when the entity is persisted
     @CreationTimestamp
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdAt;
+
+    // Optional: Add a formatted getter if needed for custom formatting (e.g., for templates)
+    public String getFormattedCreatedAt() {
+        return createdAt != null ? createdAt.format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy 'at' HH:mm:ss")) : null;
+    }
 
 }

@@ -1,0 +1,131 @@
+/* General Navbar Styling */
+.custom-navbar {
+    background: linear-gradient(90deg, #1a1a2e, #0f3460); /* Gradient background for dynamic look */
+    border-bottom: 2px solid #16213e; /* Slightly lighter border */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    margin: 0; /* Remove any external margin */
+    padding: 0; /* Remove internal padding */
+    width: 100%; /* Full width for responsiveness */
+    z-index: 1000; /* Ensure navbar stays above other elements */
+}
+
+/* Center the Navbar Items */
+.custom-navbar .custom-nav {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none; /* Remove bullets */
+    padding: 0; /* Remove extra padding */
+}
+
+/* Navbar Items */
+.custom-nav-item {
+    list-style: none; /* Remove bullets */
+    position: relative; /* Position for dropdown alignment */
+    text-align: center;
+}
+
+/* Navbar Links */
+.custom-nav-link {
+    color: #ffffff; /* White text */
+    font-size: 1rem;
+    text-transform: capitalize;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 0 15px; /* Equal spacing between items */
+    padding: 12px 15px; /* Balanced padding */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Ensure proper clickable area */
+}
+
+/* Hover Effects for Links */
+.custom-nav-link:hover,
+.custom-nav-link:focus {
+    background: linear-gradient(90deg, #e94560, #ff6f61); /* Gradient hover effect */
+    color: #ffffff;
+    transform: scale(1.1); /* Subtle zoom */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+/* Dropdown Menu */
+.custom-dropdown-menu {
+    background-color: #16213e; /* Dropdown background */
+    border: 1px solid #0f3460; /* Dropdown border */
+    border-radius: 5px;
+    display: none; /* Hidden by default */
+    opacity: 0; /* Start hidden */
+    position: absolute; /* Position relative to parent */
+    top: 100%;
+    left: 0; /* Align to the left */
+    z-index: 1000;
+    text-align: left; /* Align text */
+    min-width: 150px; /* Minimum width for dropdown */
+    padding: 5px 0; /* Remove excess padding */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show Dropdown on Hover */
+.custom-nav-item.dropdown:hover .custom-dropdown-menu {
+    display: block;
+    opacity: 1; /* Show dropdown */
+    transform: translateY(5px); /* Smooth slide-down effect */
+}
+
+/* Dropdown Items */
+.custom-dropdown-item {
+    color: #ffffff; /* White text */
+    font-size: 0.95rem;
+    padding: 10px 15px; /* Better click area */
+    border-radius: 3px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    display: block; /* Ensure each item is on a new line */
+    white-space: nowrap; /* Prevent text wrapping */
+    transition: all 0.3s ease;
+}
+
+/* Hover Effects for Dropdown Items */
+.custom-dropdown-item:hover,
+.custom-dropdown-item:focus {
+    background: linear-gradient(90deg, #e94560, #ff6f61);
+    color: #ffffff;
+    transform: scale(1.05); /* Slight zoom */
+    text-decoration: none;
+}
+
+/* Ensure Dropdown Closes in Mobile View */
+.custom-nav-item.dropdown:hover .custom-dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 992px) {
+    .custom-navbar .custom-nav {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align to left */
+        padding-left: 20px; /* Add spacing */
+    }
+
+    .custom-nav-item {
+        width: 100%; /* Full width for items */
+    }
+
+    .custom-dropdown-menu {
+        position: static; /* Remove absolute positioning */
+        width: 100%; /* Full width for dropdown */
+        opacity: 1; /* Ensure visibility */
+        transform: none; /* Reset transform */
+        display: block; /* Always display in mobile */
+        background-color: #1a1a2e; /* Match navbar background */
+        margin-top: 5px; /* Add spacing */
+    }
+}
+
+/* Adjust body padding to avoid navbar overlap */
+body {
+    padding-top: 70px;
+    margin: 0; /* Remove default margin */
+}
