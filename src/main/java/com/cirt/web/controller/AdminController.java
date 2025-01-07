@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cirt.web.dto.MediaDto;
 import com.cirt.web.entity.Media;
@@ -35,7 +36,7 @@ public class AdminController {
     }
     
     @GetMapping("/media")
-    public String getMediapage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "25") int size, Model model) {
+    public String getMediapage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size, Model model) {
         Page<Media> mediaListPaged = mediaService.getPaginatedMedias(PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
         if(mediaListPaged.getTotalElements() == 0) {
             model.addAttribute("mediaList", new LinkedList<>());
@@ -52,16 +53,7 @@ public class AdminController {
     public String saveFileInfo(@ModelAttribute("media") MediaDto mediaDto) {
         mediaService.addMedia(mediaDto);
         return "redirect:/admin/media";
-    }
-    // @DeleteMapping("/delete/{id}")
-    // public ResponseEntity<Void> deleteMedia(@PathVariable Integer id) {
-    //     try {
-    //         mediaService.deleteMediaById(id);
-    //         return ResponseEntity.ok().build();
-    //     } catch (Exception e) {
-    //         return ResponseEntity.internalServerError().build();
-    //     }
-    // }
+    }   
 
     
 }

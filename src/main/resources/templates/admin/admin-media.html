@@ -26,22 +26,34 @@
 <div th:replace="~{fragments/header :: menu}"></div>
 <div th:replace="~{fragments/admin-header :: menu}"></div>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped table-hover m-4">
-    <tr>
-      <th>File Location</th>
-      <th>Creation Time</th>
-      <th>Preview</th>
-      <th>Delete</th>
-    </tr>
-    <tr th:each="media : ${mediaList}">
-      <td th:text="${media.getFileName()}"></td>
-      <td th:text="${media.getCreatedAt()}">Smith</td>
-      <td>  </td>
-      <td><img class="media-icon-delete" src="/assets/images/delete.png" alt="delete-btn"></td>
-    </tr>
-  </table>
+<div class="table-container">
+  <div class="table-header">
+    <h3>Media Records</h3>
+  </div>
+  <div class="table-responsive">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="media : ${mediaList}">
+          <td th:text="${media.getFileName()}"></td>
+          <td th:text="${media.getCreatedAt()}"></td>
+          <td class="action-column">
+              <button class="delete-btn">
+                  <img src="/assets/images/delete.png" alt="Delete" class="delete-icon">
+              </button>
+          </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+
 <nav>
   <ul class="pagination">
       <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">

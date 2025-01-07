@@ -65,79 +65,139 @@
     background-color: #f0f0f0;
 }
 
-/* General Table Styling */
+/* General Styling for Table Container */
 .table-container {
-    width: 100%;
-    overflow-x: auto;
+  margin: 20px auto;
+  width: 95%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Header Styling */
+.table-header {
+  padding: 15px;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Table Styling */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.custom-table thead {
+  background-color: #f8f9fa;
+  color: #333333;
+}
+
+.custom-table th, .custom-table td {
+  padding: 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.custom-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1faff;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+.delete-btn:hover .delete-icon {
+  transform: scale(1.2);
+}
+
+.delete-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+/* Responsive Styling */
+.table-responsive {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .custom-table th, .custom-table td {
+    font-size: 0.9rem;
+    padding: 10px;
   }
-  
-  .responsive-table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-  }
-  
-  .responsive-table th,
-  .responsive-table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: center; /* Center content in the table cells */
-  }
-  
-  .responsive-table thead {
-    background-color: #f4f4f4;
-  }
-  
-  .responsive-table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
-  }
-  
-  .responsive-table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Delete Icon Styling */
-  .media-icon-delete {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    display: inline-block;
-    margin: 0 auto; /* Center horizontally */
-  }
-  
-  .media-icon-delete:hover {
-    transform: scale(1.2); /* Zoom-in effect */
-  }
-  
-  /* Responsiveness */
-  @media (max-width: 768px) {
-    .responsive-table thead {
-      display: none;
-    }
-  
-    .responsive-table tr {
-      display: block;
-      margin-bottom: 10px;
-    }
-  
-    .responsive-table td {
-      display: block;
-      text-align: right;
-      padding-left: 50%;
-      position: relative;
-    }
-  
-    .responsive-table td::before {
-      content: attr(data-label);
-      position: absolute;
-      left: 0;
-      width: 50%;
-      padding-left: 15px;
-      font-weight: bold;
-      text-align: left;
-    }
-  }
+}
+
+/* Pagination Container */
+.pagination-container {
+  display: flex;
+  justify-content: flex-start; /* Aligns the content to the left */
+  margin: 20px 10px;
+  padding-left: 10%; /* Adds spacing to move pagination to the right */
+}
+
+
+/* Pagination Styling */
+.pagination {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination li {
+  display: inline;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  background-color: #f8f9fa;
+  color: #007bff;
+  transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.pagination .active a {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
+}
+
+.pagination .disabled a {
+  pointer-events: none;
+  color: #6c757d;
+  background-color: #e9ecef;
+}
+
+
   
   
   
