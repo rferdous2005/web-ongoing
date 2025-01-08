@@ -123,9 +123,3 @@
         margin-top: 5px; /* Add spacing */
     }
 }
-
-/* Adjust body padding to avoid navbar overlap */
-body {
-    padding-top: 70px;
-    margin: 0; /* Remove default margin */
-}
