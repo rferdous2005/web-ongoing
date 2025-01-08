@@ -43,12 +43,18 @@ public class AdminController {
         } else {
             model.addAttribute("mediaList", mediaListPaged.getContent());
         }
+        model.addAttribute("page", page);
         model.addAttribute("media", new MediaDto());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPage", mediaListPaged.getTotalPages());
         return "admin/admin-media";
     }
 
+    @GetMapping("/media-delete")
+    public String mediaDelete(@RequestParam int fileId, @RequestParam(defaultValue = "0") int page, Model model) {
+        this.mediaService.deleteMedia(fileId);
+        return "redirect:/admin/media?page="+ page;
+    }
     @PostMapping("/media")
     public String saveFileInfo(@ModelAttribute("media") MediaDto mediaDto) {
         mediaService.addMedia(mediaDto);

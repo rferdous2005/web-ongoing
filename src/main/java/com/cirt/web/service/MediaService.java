@@ -54,4 +54,17 @@ public class MediaService {
     public Page<Media> getPaginatedMedias(Pageable pageable) {
         return mediaRepository.findAll(pageable);
     }
+
+    public void deleteMedia(int fileId) {
+        Media media = mediaRepository.findById(fileId).get();
+        mediaRepository.delete(media);
+        String filePath = UPLOAD_DIR+media.getFileName();
+        System.out.println(filePath);
+        try {
+            Files.deleteIfExists(Paths.get(filePath));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

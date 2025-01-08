@@ -47,12 +47,12 @@
       <tbody>
         <tr th:each="media : ${mediaList}">
           <td>
-              <span th:text="${media.getFileName()}" id="fileName-${media.id}"></span>
+              <span th:text="${media.getFileName()}" th:id="'copy-'+${media.id}"></span>
               <img 
                   src="/assets/images/copy-icon.png" 
                   alt="Copy Icon" 
                   class="copy-icon ms-2" 
-                  onclick="copyFileName(this, 'fileName-${media.id}')"
+                  th:onclick="'copyFileName(this, ' + '\'' + copy- + ${media.id} + '\'' + ')'"
                   style="cursor: pointer; width: 20px; height: 20px;"
               >
           </td>
@@ -64,9 +64,9 @@
               <img src="/assets/images/pdf-icon.png" alt="PDF" class="pdf-icon">
           </td>
           <td class="action-column">
-              <button class="delete-btn">
+              <a class="delete-btn" th:href="'/admin/media-delete?fileId='+${media.getId()} + '&page=' + ${page}">
                   <img src="/assets/images/delete.png" alt="Delete" class="delete-icon">
-              </button>
+              </a>
           </td>
         </tr>    
       </tbody>
