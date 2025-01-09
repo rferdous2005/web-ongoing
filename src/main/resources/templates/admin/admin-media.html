@@ -58,7 +58,7 @@
           </td>
           <td th:text="${#temporals.format(media.getCreatedAt(), 'dd-MM-yyyy - HH:mm:ss')}"></td>
           <td class="preview-column" th:if="${media.getFileExtension() == '.png' || media.getFileExtension() == '.jpg' || media.getFileExtension() == '.jpeg'}">
-              <img src="/assets/images/linkedin1.png" alt="Image" class="pdf-icon">
+              <img th:src="@{'/media?id=' + ${media.getFileName()}}" alt="Image" class="pdf-icon">
           </td>
           <td class="preview-column" th:unless="${media.getFileExtension() == '.png' || media.getFileExtension() == '.jpg' || media.getFileExtension() == '.jpeg'}">
               <img src="/assets/images/pdf-icon.png" alt="PDF" class="pdf-icon">
