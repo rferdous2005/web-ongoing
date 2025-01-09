@@ -11,6 +11,7 @@ public class PostController {
     
     @GetMapping("/{category}")
     public String showPostListCategorywise(@PathVariable("category") String category, Model model) {
+        category = category.substring(0, 1).toUpperCase() + category.substring(1);
         model.addAttribute("category", category);
         model.addAttribute("t", category +" | BGD e-GOV CIRT");
         return "post/post-list";
