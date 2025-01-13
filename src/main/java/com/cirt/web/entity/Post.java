@@ -29,13 +29,19 @@ public class Post {
     @Column(name = "title", nullable = false, length = 300)
     private String title;
 
+    @Column(name = "sub_title", nullable = false, length = 300)
+    private String subTitle;
+
+    @Column(name = "uri", nullable = false, length = 300)
+    private String uri;
+
     //@Column(name = "body", nullable = false, length = 65535)
     @Lob
     @Column(columnDefinition = "MEDIUMTEXT")
     private String body;
 
-    @Column(name = "status", nullable = false, length = 10)
-    private String status;
+    @Column(name = "visibility", nullable = false, length = 10)
+    private String visibility;
 
     LocalDateTime publishedAt;
 
