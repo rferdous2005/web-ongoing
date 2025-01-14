@@ -3,30 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Who We Are | BGD e-GOV CIRT</title>
-  <!-- Bootstrap CSS -->
+  <title>Who We Are</title>
+  <!-- Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/basicpages.css}">
 </head>
 <body>
     <!-- Navigation Bar -->
     <div th:replace="~{fragments/header :: menu}"></div>
+
     <!-- Page Header -->
-    <header class="bg-light py-5 text-center">
-      <div class="container">
-          <h4 class="display-5">Who Are We</h4>
-          <p class="lead">Explore about the identity of BGD e-GOV CIRT. All about our Foundation and Introduction.</p>
-      </div>
+    <header>
+        <div class="container">
+            <h1>Who We Are</h1>
+            <p>Meet the people and values driving our vision of excellence.</p>
+        </div>
     </header>
 
-  <!-- Post List -->
-  <div class="container my-5">
-      <div class="row">
-          
-      </div>
-  </div>
+    <!-- Main Content -->
+    <div class="content-container my-5">
+        <h2>About Us</h2>
+        <p>We are a dedicated team of professionals working towards a smarter, safer, and more innovative digital future. Our expertise lies in delivering tailored solutions to businesses and individuals.</p>
+
+        <h2>Our Mission</h2>
+        <p>To lead the digital transformation journey with trust, expertise, and innovation.</p>
+    </div>
+
   <div th:replace="~{fragments/footer :: footer}"></div>
 
 <!-- FontAwesome for Icons -->

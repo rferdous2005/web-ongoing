@@ -9,40 +9,50 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/postlist-style-1.css}">
 </head>
 <body>
     <!-- Navigation Bar -->
     <div th:replace="~{fragments/header :: menu}"></div>
+
     <!-- Page Header -->
-    <header class="bg-light py-5 text-center">
+    <header>
       <div class="container">
-          <h1 class="display-4" th:text="${category} + ' by BGD e-GOV CIRT'">Posts</h1>
-          <p class="lead">Explore the latest articles and tips for certification success.</p>
+          <h1 th:text="${category} + ' by BGD e-GOV CIRT'">Posts</h1>
+          <p>Explore the latest articles and tips for certification success.</p>
       </div>
     </header>
 
-  <!-- Post List -->
-  <div class="container my-5">
-      <div class="row">
-          <!-- Post Item -->
-          <div class="col-md-6 col-lg-4 mb-4" th:each="post : ${postList}">
-              <div class="card h-100">
-                  <img th:src="'/assets/images/thumbnails/' + ${category} + '.png'" class="card-img-top" alt="Post Image">
-                  <div class="card-body">
-                      <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="card-title"><h4 th:text="${post.getTitle()}">Post Title</h4></a>
-                      <p class="card-text">Learn about the top AWS certifications to boost your career in cloud computing.</p>
-                      <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn btn-success">Read More</a>
-                  </div>
-              </div>
-          </div>
+    <!-- Post List -->
+    <div class="content-container mt-5">
+        <div class="row">
+            <!-- Post Item -->
+            <div class="col-md-6 col-lg-4 mb-4" th:each="post : ${postList}">
+                <div class="card h-100">
+                    <img th:src="'/assets/images/thumbnails/' + ${category} + '.png'" class="card-img-top" alt="Post Image">
+                    <div class="card-body">
+                        <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="card-title">
+                            <h4 th:text="${post.getTitle()}">Post Title</h4>
+                        </a>
+                        <p class="card-text">Learn about the top AWS certifications to boost your career in cloud computing.</p>
+                        <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn btn-success">Read More</a>
+                    </div>
+                </div>
+            </div>
         </div>
-  </div>
-  <div th:replace="~{fragments/footer :: footer}"></div>
+        <!-- Pagination -->
+        <div class="pagination text-center mt-4">
+            <a th:href="@{/posts(page=${currentPage - 1})}" th:if="${currentPage > 0}">Previous</a>
+            <a th:href="@{/posts(page=${currentPage + 1})}" th:if="${currentPage < totalPage - 1}">Next</a>
+        </div>
+    </div>
 
-<!-- FontAwesome for Icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
+    <!-- FontAwesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
