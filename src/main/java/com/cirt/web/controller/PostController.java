@@ -23,13 +23,14 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    private final int PAGE_SIZE = 5;
+    private final int PAGE_SIZE = 1;
 
     @GetMapping("/{category}")
     public String showPostListCategorywise(@PathVariable("category") String category, @RequestParam(defaultValue = "0") int page, Model model) {
-        category = category.substring(0, 1).toUpperCase() + category.substring(1);
+        String categoryCap = category.substring(0, 1).toUpperCase() + category.substring(1);
+        model.addAttribute("categoryCap", categoryCap);
         model.addAttribute("category", category);
-        model.addAttribute("t", category +" | BGD e-GOV CIRT");
+        model.addAttribute("t", categoryCap +" | BGD e-GOV CIRT");
 
         Page<Post> postListPaged = postService.getPaginatedPostsForPublic(category, PageRequest.of(page, PAGE_SIZE, Sort.by(Sort.Direction.DESC, "publishedAt")));
         if(postListPaged.getTotalElements() == 0) {
