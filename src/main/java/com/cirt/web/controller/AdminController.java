@@ -86,4 +86,20 @@ public class AdminController {
         this.mediaService.deleteMedia(fileId);
         return "redirect:/admin/media?page="+ page;
     }
+
+    @GetMapping("/admin-posts")
+    public String getPostspage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size, Model model) {
+        Page<Media> mediaListPaged = mediaService.getPaginatedMedias(PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
+        if(mediaListPaged.getTotalElements() == 0) {
+            model.addAttribute("mediaList", new LinkedList<>());
+        } else {
+            model.addAttribute("mediaList", mediaListPaged.getContent());
+        }
+        model.addAttribute("page", page);
+        model.addAttribute("media", new MediaDto());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPage", mediaListPaged.getTotalPages());
+        return "admin/admin-post-list";
+    }
+
 }
