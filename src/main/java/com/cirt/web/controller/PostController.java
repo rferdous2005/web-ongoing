@@ -44,7 +44,7 @@ public class PostController {
     }
 
     @GetMapping("/{category}/{post-uri}")
-    public void showSinglePost(@PathVariable("post-uri") String uri) {
-
+    public String showSinglePost(@PathVariable("category") String category, @PathVariable("post-uri") String uri) {
+        return "post/single-post";
     }
 }
