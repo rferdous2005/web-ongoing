@@ -76,7 +76,7 @@ public class AdminController {
         model.addAttribute("media", new MediaDto());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPage", mediaListPaged.getTotalPages());
-        return "admin/admin-media";
+        return "admin/admin-post-list";
     }
 
     @GetMapping("/post")
@@ -92,4 +92,5 @@ public class AdminController {
         Post returnedPost = this.postService.addPostByAdmin(post);
         return "redirect:/admin/posts";
     }
+
 }
