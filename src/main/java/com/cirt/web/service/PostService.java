@@ -18,4 +18,8 @@ public class PostService {
     public Page<Post> getPaginatedPostsForPublic(String category, Pageable pageable) {
         return this.postRepository.findByCategoryAndVisibility(category, "public", pageable);
     }
+
+    public Post addPostByAdmin(Post post) {
+        return this.postRepository.save(post);
+    }
 }

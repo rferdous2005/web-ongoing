@@ -19,29 +19,29 @@
 
     <div class= "container form-container">
         <h2>Create a Post</h2>
-        <form id="postForm">
+        <form id="postForm" method="post" th:action="@{/admin/post}" th:object="${post}">
             <!-- Title -->
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter post title" required onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter post title'">
+                <input type="text" class="form-control" id="title" placeholder="Enter post title" required th:field="*{title}" onkeyup="enteredTitleText(this);">
             </div>
 
              <!-- Sub-Title -->
             <div class="mb-3">
                 <label for="sub-title" class="form-label">Sub-Title</label>
-                <input type="text" class="form-control" id="sub-title" placeholder="Enter post sub-title" required onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter post sub-title'">
+                <input type="text" class="form-control" id="sub-title" placeholder="Enter post sub-title" required th:field="*{subTitle}">
             </div>
 
             <!-- URI for Image -->
             <div class="mb-3">
-                <label for="imageUri" class="form-label">File URI</label>
-                <input type="url" class="form-control" id="imageUri" placeholder="Enter image URI" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter image URI'">
+                <label for="imageUri" class="form-label">Post URI</label>
+                <input type="text" class="form-control" id="postUri" placeholder="Enter URI" th:field="*{uri}">
             </div>
 
             <!-- Page Selection -->
             <div class="mb-3">
                 <label for="pageSelection" class="form-label">Which Page do you want to post your content?</label>
-                <select class="form-select" id="pageSelection">
+                <select class="form-select" id="pageSelection" th:field="*{category}">
                     <option value="alerts">Alerts</option>
                     <option value="advisories">Advisories</option>
                     <option value="bulletins">Bulletins</option>
@@ -60,44 +60,29 @@
                 <button type="button" class="toolbar-btn" onclick="execCommand('insertUnorderedList')"><i class="fas fa-list-ul"></i> UL</button>
                 <button type="button" class="toolbar-btn" onclick="createLink()"><i class="fas fa-link"></i> Link</button>
                 <button type="button" class="toolbar-btn" onclick="execCommand('unlink')"><i class="fas fa-unlink"></i> Unlink</button>
+                <button id="showHtmlButton" type="button" class="btn btn-danger" onclick="clickedShowHtml()"> Show Html </button>
+                <button id="showBeautifiedButton" type="button" class="btn btn-success" onclick="clickedShowBeautified()" disabled> Show Beautified </button>
             </div>
 
             <!-- Editor -->
             <div id="editor" class="editor-container" contenteditable="true">
                 Start writing here...
             </div>
-
-            <!-- File Uploader -->
-            <div class="file-uploader">
-                <label for="fileUploader" class="file-label">Upload a File:</label>
-                <input type="file" id="fileUploader" class="form-control">
-            </div>
+            <textarea hidden th:field="*{body}" id="bodyHtmlTextArea"></textarea>
 
             <!-- Visibility -->
             <div class="mb-3">
                 <label for="visibility" class="form-label">Visibility</label>
-                <select class="form-select" id="visibility">
+                <select class="form-select" id="visibility" th:field="*{visibility}">
                     <option value="public">Public</option>
                     <option value="private">Private</option>
                 </select>
             </div>
 
-            <!-- Creation Time -->
-            <div class="mb-3">
-                <label for="creationTime" class="form-label">Creation Time</label>
-                <input type="text" class="form-control" id="creationTime" readonly value="">
-            </div>
-
             <!-- Publication Time -->
             <div class="mb-3">
-                <label for="publicationTime" class="form-label">Publication Time</label>
-                <input type="datetime-local" class="form-control" id="publicationTime">
-            </div>
-
-            <!-- Created By -->
-            <div class="mb-3">
-                <label class="form-label">Created By</label>
-                <input type="text" class="form-control" readonly value="Admin">
+                <label for="publicationTime" class="form-label">Publish Time</label>
+                <input type="datetime-local" class="form-control" th:field="*{publishedAt}">
             </div>
 
             <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>
@@ -105,29 +90,10 @@
     </div>
 
 
-    <script src="/assets/js/admin-post-form.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script th:src="@{/assets/js/admin-post-form.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Set creation time to the local time when the page loads
-        document.getElementById('creationTime').value = new Date().toLocaleString();
-
-        function execCommand(command, value = null) {
-            document.execCommand(command, false, value);
-        }
-
-        function createLink() {
-            const url = prompt("Enter the URL:");
-            if (url) {
-                execCommand("createLink", url);
-            }
-        }
-
-        // Form submission alert
-        document.getElementById('postForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Submission successful!');
-        });
+        
     </script>
 </body>
 </html>

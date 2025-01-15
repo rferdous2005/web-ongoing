@@ -23,16 +23,16 @@ function execCommand(command, value = null) {
     }
   }
   
-  document.getElementById('submitBtn').addEventListener('click', () => {
-    const content = document.getElementById('editor').innerHTML;
-    const file = document.getElementById('fileUploader').files[0];
+  // document.getElementById('submitBtn').addEventListener('click', () => {
+  //   const content = document.getElementById('editor').innerHTML;
+  //   const file = document.getElementById('fileUploader').files[0];
   
-    if (file) {
-      alert(`File "${file.name}" is uploaded. Content submitted:\n${content}`);
-    } else {
-      alert("No file uploaded. Content submitted:\n" + content);
-    }
-  });
+  //   if (file) {
+  //     alert(`File "${file.name}" is uploaded. Content submitted:\n${content}`);
+  //   } else {
+  //     alert("No file uploaded. Content submitted:\n" + content);
+  //   }
+  // });
 
 
   function clearPlaceholder() {
@@ -49,6 +49,30 @@ function execCommand(command, value = null) {
     }
   }
   
+  function clickedShowHtml() {
+    var html = $("#editor").html();
+    $("#editor").text(html)
+    $("#bodyHtmlTextArea").text(html);
+    $("#showHtmlButton").hide();
+    $("#showBeautifiedButton").show();
+    $("#showBeautifiedButton").prop("disabled", false);
+  }
+
+  function clickedShowBeautified() {
+    var htmlText = $("#editor").text();
+    $("#editor").html(htmlText)
+    $("#bodyHtmlTextArea").text(htmlText);
+    $("#showBeautifiedButton").hide();
+    $("#showHtmlButton").show();
+  }
+
+  function enteredTitleText(inputBox) {
+    let title = $(inputBox).val();
+    let uri = title.toLowerCase();
+    let tokens = uri.split(" ");
+    uri = tokens.join("-");
+    $("#postUri").val(uri);
+  }
   // Add event listeners to handle placeholder dynamically
   const editor = document.getElementById('editor');
   editor.addEventListener('focus', clearPlaceholder);
