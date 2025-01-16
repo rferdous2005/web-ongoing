@@ -56,10 +56,6 @@ public class BasicController {
     
     @GetMapping("/media")
     public void viewFile(HttpServletResponse response, HttpServletRequest request, @RequestParam("id") String fileName) throws Exception {
-        //Media media = mediaRepository.findByFileName(fileName).orElseThrow(()->new Exception("No document Found!"));
-
-        // logger.error("UPLOADED_FOLDER: " + GlobalConstants.UPLOADED_FOLDER);
-
         File file = new File( UPLOAD_DIR + fileName);
         FileInputStream inStream = new FileInputStream(file);
         // gets MIME type of the file

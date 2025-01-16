@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cirt.web.dto.MediaDto;
-import com.cirt.web.entity.Media;
 import com.cirt.web.entity.Post;
 import com.cirt.web.service.PostService;
 
@@ -44,7 +42,12 @@ public class PostController {
     }
 
     @GetMapping("/{category}/{post-uri}")
-    public String showSinglePost(@PathVariable("category") String category, @PathVariable("post-uri") String uri) {
+    public String showSinglePost(@PathVariable("category") String category, @PathVariable("post-uri") String uri, Model model) {
+        Post returnedPost = postService.findSinglePostForPublic(category, uri).orElse(null);
+        if(returnedPost == null) {
+            return "404";
+        }
+        model.addAttribute("post", returnedPost);
         return "post/single-post";
     }
 }

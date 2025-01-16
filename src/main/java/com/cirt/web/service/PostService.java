@@ -18,7 +18,7 @@ public class PostService {
     private PostRepository postRepository;
 
     public Page<Post> getPaginatedPostsForPublic(String category, Pageable pageable) {
-        return this.postRepository.findByCategoryAndVisibility(category, "public", pageable);
+        return this.postRepository.findByVisibilityAndCategory("public", category, pageable);
     }
 
     public Post addPostByAdmin(Post post) {
@@ -31,5 +31,9 @@ public class PostService {
 
     public Optional<Post> findByIdForAdmin(int id) {
         return this.postRepository.findById(id);
+    }
+
+    public Optional<Post> findSinglePostForPublic(String category, String uri) {
+        return this.postRepository.findByVisibilityAndCategoryAndUri("public", category, uri);
     }
 }
