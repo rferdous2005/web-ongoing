@@ -47,7 +47,7 @@
       <tbody>
         <tr th:each="media : ${mediaList}">
           <td>
-              <span th:text="${media.getFileName()}" th:id="'copy-'+${media.id}"></span>
+              <span th:text="'/media?id=' + ${media.getFileName()}" th:id="'copy-'+${media.id}"></span>
               <img 
                   src="/assets/images/copy-icon.png" 
                   alt="Copy Icon" 
@@ -91,7 +91,7 @@
 </nav>
 <div class="modal fade" th:id="media-upload-form"
                     role="dialog" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg ">
+  <div class="modal-dialog modal-dialog-centered modal-md">
     <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title" id="staticBackdropLabel" >Media Upload Form</h3>

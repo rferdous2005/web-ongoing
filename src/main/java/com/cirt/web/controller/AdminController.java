@@ -12,12 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cirt.web.dto.MediaDto;
+import com.cirt.web.dto.PostSummaryDto;
 import com.cirt.web.entity.Media;
 import com.cirt.web.entity.Post;
 import com.cirt.web.service.MediaService;
@@ -65,18 +67,39 @@ public class AdminController {
     }   
 
     @GetMapping("/posts")
-    public String getPostspage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size, Model model) {
-        Page<Media> mediaListPaged = mediaService.getPaginatedMedias(PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
-        if(mediaListPaged.getTotalElements() == 0) {
-            model.addAttribute("mediaList", new LinkedList<>());
+    public String getAllPostsPage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size, Model model) {
+        Page<PostSummaryDto> postListPaged = postService.getPaginatedPostsForAdmin(PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id")));
+        if(postListPaged.getTotalElements() == 0) {
+            model.addAttribute("postList", new LinkedList<>());
         } else {
-            model.addAttribute("mediaList", mediaListPaged.getContent());
+            model.addAttribute("postList", postListPaged.getContent());
         }
         model.addAttribute("page", page);
-        model.addAttribute("media", new MediaDto());
         model.addAttribute("currentPage", page);
-        model.addAttribute("totalPage", mediaListPaged.getTotalPages());
+        model.addAttribute("totalPage", postListPaged.getTotalPages());
         return "admin/admin-post-list";
+    }
+
+    @GetMapping("/posts/{id}")
+    public String getSinglePostPage(@PathVariable int id, Model model) {
+        Post returnedPostData = postService.findByIdForAdmin(id).orElse(null);
+        String[] publishedAtTokens = returnedPostData.getPublishedAt().toString().split(":");
+        String publishedAt = String.join(":", publishedAtTokens[0], publishedAtTokens[1]);
+        System.out.println(publishedAt);
+        model.addAttribute("publishedAtStringified", publishedAt);
+        model.addAttribute("post", returnedPostData);
+        return "admin/admin-post-edit-form";
+    }
+
+    @PostMapping("/posts/{id}")
+    public String updateSinglePost(@PathVariable int id, Model model) {
+        Post returnedPostData = postService.findByIdForAdmin(id).orElse(null);
+        String[] publishedAtTokens = returnedPostData.getPublishedAt().toString().split(":");
+        String publishedAt = String.join(":", publishedAtTokens[0], publishedAtTokens[1]);
+        System.out.println(publishedAt);
+        model.addAttribute("publishedAtStringified", publishedAt);
+        model.addAttribute("post", returnedPostData);
+        return "admin/admin-post-edit-form";
     }
 
     @GetMapping("/post")
