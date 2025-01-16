@@ -17,15 +17,15 @@
     <div th:replace="~{fragments/header :: menu}"></div>
 
     <main>
-        <div class="content">
+        <div class="content row container">
             <!-- Left Side: Description -->
-            <section class="description">
+            <section class="description col-md-9">
                 <h1 th:text="${post.getTitle()}"> </h1>
                 <p th:utext="${post.getBody()}"> </p>
             </section>
 
             <!-- Right Side: Related Posts -->
-            <section class="related-posts">
+            <section class="related-posts col-md-3">
                 <h2>Related Posts</h2>
                 <ul>
                     <li><a href="#" th:href="@{/post/1}">Related Post 1</a></li>
