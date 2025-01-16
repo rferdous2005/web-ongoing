@@ -10,18 +10,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cirt.web.dto.MediaDto;
 import com.cirt.web.entity.Media;
+import com.cirt.web.entity.Post;
 import com.cirt.web.service.MediaService;
+import com.cirt.web.service.PostService;
 
 @Controller
 @RequestMapping("/admin")
@@ -29,6 +29,9 @@ public class AdminController {
     
     @Autowired
     private MediaService mediaService; 
+
+    @Autowired
+    private PostService postService;
 
     @GetMapping("/home")
     public String getHomepage() {
@@ -78,13 +81,16 @@ public class AdminController {
 
     @GetMapping("/post")
     public String postAddForm(Model model) {
+        Post placeholderPost = new Post();
+        model.addAttribute("post", placeholderPost);
         return "admin/admin-post-add-form";
     }
 
     @PostMapping("/post")
-    public String postSave(@RequestParam int fileId, @RequestParam(defaultValue = "0") int page, Model model) {
-        this.mediaService.deleteMedia(fileId);
-        return "redirect:/admin/media?page="+ page;
+    public String postSave(Model model, @ModelAttribute("post") Post post, final RedirectAttributes redirectAttributes) {
+        post.setCreatedBy("Admin");
+        Post returnedPost = this.postService.addPostByAdmin(post);
+        return "redirect:/admin/posts";
     }
 
 }
