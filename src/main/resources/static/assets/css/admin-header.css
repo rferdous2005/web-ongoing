@@ -1,5 +1,5 @@
 /* General Navbar Styling */
-.custom-navbar {
+.ad-navbar {
     background: linear-gradient(90deg, #1a1a2e, #0f3460); /* Gradient background for dynamic look */
     border-bottom: 2px solid #16213e; /* Slightly lighter border */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
@@ -10,7 +10,7 @@
 }
 
 /* Center the Navbar Items */
-.custom-navbar .custom-nav {
+.ad-navbar .ad-nav {
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -20,14 +20,14 @@
 }
 
 /* Navbar Items */
-.custom-nav-item {
+.ad-nav-item {
     list-style: none; /* Remove bullets */
     position: relative; /* Position for dropdown alignment */
     text-align: center;
 }
 
 /* Navbar Links */
-.custom-nav-link {
+.ad-nav-link {
     color: #ffffff; /* White text */
     font-size: 1rem;
     text-transform: capitalize;
@@ -41,8 +41,8 @@
 }
 
 /* Hover Effects for Links */
-.custom-nav-link:hover,
-.custom-nav-link:focus {
+.ad-nav-link:hover,
+.ad-nav-link:focus {
     background: linear-gradient(90deg, #e94560, #ff6f61); /* Gradient hover effect */
     color: #ffffff;
     transform: scale(1.1); /* Subtle zoom */
@@ -51,7 +51,7 @@
 }
 
 /* Dropdown Menu */
-.custom-dropdown-menu {
+.ad-dropdown-menu {
     background-color: #16213e; /* Dropdown background */
     border: 1px solid #0f3460; /* Dropdown border */
     border-radius: 5px;
@@ -68,14 +68,21 @@
 }
 
 /* Show Dropdown on Hover */
-.custom-nav-item.dropdown:hover .custom-dropdown-menu {
+.ad-nav-item.dropdown:hover .ad-dropdown-menu {
     display: block;
     opacity: 1; /* Show dropdown */
     transform: translateY(5px); /* Smooth slide-down effect */
 }
 
+/* Ensure Dropdown Stays Open on Hover */
+.ad-dropdown-menu:hover {
+    display: block;
+    opacity: 1; /* Maintain visibility */
+    transform: translateY(5px); /* Maintain position */
+}
+
 /* Dropdown Items */
-.custom-dropdown-item {
+.ad-dropdown-item {
     color: #ffffff; /* White text */
     font-size: 0.95rem;
     padding: 10px 15px; /* Better click area */
@@ -87,8 +94,8 @@
 }
 
 /* Hover Effects for Dropdown Items */
-.custom-dropdown-item:hover,
-.custom-dropdown-item:focus {
+.ad-dropdown-item:hover,
+.ad-dropdown-item:focus {
     background: linear-gradient(90deg, #e94560, #ff6f61);
     color: #ffffff;
     transform: scale(1.05); /* Slight zoom */
@@ -96,24 +103,24 @@
 }
 
 /* Ensure Dropdown Closes in Mobile View */
-.custom-nav-item.dropdown:hover .custom-dropdown-menu {
+.ad-nav-item.dropdown:hover .ad-dropdown-menu {
     display: block;
     opacity: 1;
 }
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 992px) {
-    .custom-navbar .custom-nav {
+    .ad-navbar .ad-nav {
         flex-direction: column; /* Stack items vertically */
         align-items: flex-start; /* Align to left */
         padding-left: 20px; /* Add spacing */
     }
 
-    .custom-nav-item {
+    .ad-nav-item {
         width: 100%; /* Full width for items */
     }
 
-    .custom-dropdown-menu {
+    .ad-dropdown-menu {
         position: static; /* Remove absolute positioning */
         width: 100%; /* Full width for dropdown */
         opacity: 1; /* Ensure visibility */
@@ -122,4 +129,11 @@
         background-color: #1a1a2e; /* Match navbar background */
         margin-top: 5px; /* Add spacing */
     }
+}
+
+/* Remove List Style Globally */
+ul, li {
+    list-style: none; /* Remove bullets */
+    padding: 0;
+    margin: 0;
 }

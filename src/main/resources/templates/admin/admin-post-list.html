@@ -11,7 +11,7 @@
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/admin-header.css}">
-  <!-- <link rel="stylesheet" th:href="@{/assets/css/admin-post-list.css}"> -->
+ <link rel="stylesheet" th:href="@{/assets/css/admin-post-list.css}">
 
   <style>
     /* Custom styles (optional) */
@@ -27,7 +27,7 @@
 <div th:replace="~{fragments/header :: menu}"></div>
 <div th:replace="~{fragments/admin-header :: menu}"></div>
 
-<div class="container">
+<div class="admin-container">
     <h1>Post List</h1>
     <table>
         <thead>
@@ -48,11 +48,11 @@
                 <td>15-Jan-2025</td>
                 <td>Public</td>
                 <td>
-                    <a href="#" class="btn">
-                        <img src="/assets/images/edit.png" alt="View">View
+                    <a href="#" class="admin-btn">
+                        <img src="/assets/images/edit.png" alt="View" height="24" width="24">View
                     </a>
-                    <a href="#" class="btn">
-                        <img src="/assets/images/delete.png" alt="Delete">Delete
+                    <a href="#" class="admin-btn">
+                        <img src="/assets/images/delete.png" alt="Delete" height="24" width="24">Delete
                     </a>
                 </td>
             </tr>
@@ -63,11 +63,11 @@
                 <td>14-Jan-2025</td>
                 <td>Private</td>
                 <td>
-                    <a href="#" class="btn">
-                        <img src="/assets/images/edit.png" alt="View">View
+                    <a href="#" class="admin-btn">
+                        <img src="/assets/images/edit.png" alt="View" height="24" width="24">View
                     </a>
-                    <a href="#" class="btn">
-                        <img src="/assets/images/delete.png" alt="Delete">Delete
+                    <a href="#" class="admin-btn">
+                        <img src="/assets/images/delete.png" alt="Delete" height="24" width="24">Delete
                     </a>
                 </td>
             </tr>
@@ -78,18 +78,18 @@
                 <td>13-Jan-2025</td>
                 <td>Public</td>
                 <td>
-                    <a href="#" class="btn">
-                        <img src="/assets/images/edit.png" alt="View">View
+                    <a href="#" class="admin-btn">
+                        <img src="/assets/images/edit.png" alt="View" height="24" width="24">View
                     </a>
-                    <a href="#" class="btn">
-                        <img src="/assets/images/delete.png" alt="Delete">Delete
+                    <a href="#" class="admin-btn">
+                        <img src="/assets/images/delete.png" alt="Delete" height="24" width="24">Delete
                     </a>
                 </td>
             </tr>
         </tbody>
     </table>
-    <a href="#" class="btn">
-        <img src="/assets/images/create.png" alt="Add">Add New Post
+    <a href="/admin/post" class="admin-btn">
+        <img src="/assets/images/create.png" alt="Add" height="24" width="24">Add New Post
     </a>
 </div>
 

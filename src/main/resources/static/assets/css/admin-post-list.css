@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 
-.container {
+.admin-container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
@@ -21,12 +21,27 @@ h1 {
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 0.8rem;
+    }
 }
 
 table thead {
@@ -52,7 +67,7 @@ table tbody tr:hover {
     background-color: #d4edda;
 }
 
-.btn {
+.admin-btn {
     display: inline-flex;
     align-items: center;
     padding: 8px 12px;
@@ -62,19 +77,43 @@ table tbody tr:hover {
     border-radius: 4px;
     font-size: 14px;
     transition: transform 0.3s ease, background-color 0.3s;
+    white-space: nowrap;
 }
 
-.btn img {
+.admin-btn img {
     width: 16px;
     height: 16px;
     margin-right: 8px;
 }
 
-.btn:hover {
+.admin-btn:hover {
     background-color: #218838;
     transform: scale(1.1);
 }
 
-.btn:active {
+.admin-btn:active {
     background-color: #1e7e34;
+}
+
+@media (max-width: 768px) {
+    .admin-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+    .admin-btn img {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-container {
+        padding: 10px;
+    }
+    table th, table td {
+        padding: 8px;
+    }
+    h1 {
+        font-size: 1rem;
+    }
 }

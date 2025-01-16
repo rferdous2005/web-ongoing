@@ -22,6 +22,14 @@ function execCommand(command, value = null) {
       execCommand("foreColor", color);
     }
   }
+
+//   function insertImage() {
+//     const imageUrl = prompt("Enter the image URL:");
+//     if (imageUrl) {
+//         execCommand("insertImage", imageUrl);
+//     }
+// }
+
   
   document.getElementById('submitBtn').addEventListener('click', () => {
     const content = document.getElementById('editor').innerHTML;
