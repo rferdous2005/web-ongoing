@@ -71,7 +71,7 @@
             </div>
 
             <!-- Editor -->
-            <div id="editor" class="editor-container" contenteditable="true">
+            <div id="editor" class="editor-container" contenteditable="true" th:utext="*{body}">
                 Start writing here...
             </div>
             <textarea hidden th:field="*{body}" id="bodyHtmlTextArea"></textarea>
