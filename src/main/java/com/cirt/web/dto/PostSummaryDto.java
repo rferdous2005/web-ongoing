@@ -9,5 +9,6 @@ public interface PostSummaryDto {
     String getCategory();
     LocalDateTime getPublishedAt();  
     String getSubTitle();
-    String getUri();  
+    String getUri();
+    String getThumbnail();  
 }

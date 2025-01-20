@@ -35,6 +35,9 @@ public class Post {
     @Column(name = "uri", nullable = false, length = 300)
     private String uri;
 
+    @Column(name = "thumbnail", nullable = true, length = 100)
+    private String thumbnail;
+
     //@Column(name = "body", nullable = false, length = 65535)
     @Lob
     @Column(columnDefinition = "MEDIUMTEXT")
