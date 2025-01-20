@@ -25,9 +25,9 @@ public class PostController {
 
     @GetMapping("/{category}")
     public String showPostListCategorywise(@PathVariable("category") String category, @RequestParam(defaultValue = "0") int page, Model model) {
-        category = category.substring(0, 1).toUpperCase() + category.substring(1);
-        model.addAttribute("category", category);
-        model.addAttribute("t", category +" | BGD e-GOV CIRT");
+        String categoryCap = category.substring(0, 1).toUpperCase() + category.substring(1);
+        model.addAttribute("category", categoryCap);
+        model.addAttribute("t", categoryCap +" | BGD e-GOV CIRT");
 
         Page<Post> postListPaged = postService.getPaginatedPostsForPublic(category, PageRequest.of(page, PAGE_SIZE, Sort.by(Sort.Direction.DESC, "publishedAt")));
         if(postListPaged.getTotalElements() == 0) {
@@ -38,7 +38,24 @@ public class PostController {
         model.addAttribute("page", page);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPage", postListPaged.getTotalPages());
-        return "post/post-list";
+        switch (category) {
+            case "alerts":
+            case "advisories":
+            case "bulletins":
+            case "acts":
+            case "policies":
+            case "notices":
+            case "news":
+            case "events":
+            case "articles":
+            case "magazines":
+            case "guidelines":
+            case "documents":
+                return "post/post-list";
+            default:
+                return "404";
+        }
+        
     }
 
     @GetMapping("/{category}/{post-uri}")
