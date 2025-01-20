@@ -9,6 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
+  <link rel="stylesheet" href="/assets/css/homepage.css">
 
 
   <style>
@@ -19,10 +20,198 @@
   </style>
 </head>
 <body>
-
 <!-- Navigation Bar -->
 <div th:replace="~{fragments/header :: menu}"></div>
-<div th:replace="~{fragments/footer :: footer}"></div>
+
+
+<section class="hesec-hero">
+  <div class="hesec-hero-content">
+      <h1>Dynamic Hero Section</h1>
+      <p>Designing a smart, responsive, and animated hero section.</p>
+      <button>Learn More</button>
+  </div>
+</section>
+<section class="hesec-merged-section">
+  <div class="hesec-team-members-inline">
+      <div class="hesec-team-member">
+          <img src="/assets/images/male-face.png" alt="John Doe">
+          <h3>John Doe</h3>
+          <p>Lead Designer</p>
+      </div>
+      <div class="hesec-team-member">
+          <img src="/assets/images/male-face.png" alt="Jane Smith">
+          <h3>Jane Smith</h3>
+          <p>Project Manager</p>
+      </div>
+      <div class="hesec-team-member">
+          <img src="/assets/images/male-face.png" alt="Emily Johnson">
+          <h3>Emily Johnson</h3>
+          <p>Software Engineer</p>
+      </div>
+      <div class="hesec-team-member">
+          <img src="/assets/images/male-face.png" alt="Emily Johnson">
+          <h3>Emily Johnson</h3>
+          <p>Software Engineer</p>
+      </div>
+      <div class="hesec-team-member">
+          <img src="/assets/images/male-face.png" alt="Emily Johnson">
+          <h3>Emily Johnson</h3>
+          <p>Software Engineer</p>
+      </div>
+      <div class="hesec-team-member">
+          <img src="/assets/images/male-face.png" alt="Emily Johnson">
+          <h3>Emily Johnson</h3>
+          <p>Software Engineer</p>
+      </div>
+  </div>
+  <div class="hesec-description">
+      <h2>Description</h2>
+      <p>In response to the cyber-attack on Bangladesh Bank in February 2016, 
+          the Government of Bangladesh's Computer Incident Response Team, 
+          known as BGD e-GOV CIRT, was established in March 2016 under 
+          Section 6 of the BCC Act 1990, as a proactive initiative
+           by the Information and Communication Technology Division.
+      <br>Also, Section 9 of the Cyber Security Act, 2023 directs the formation of a 
+          National Computer Emergency Response Team (N-CERT) under the 
+          National Cyber Security Agency. BGD e-GOV CIRT has been given additional 
+          responsibility of National Computer Emergency Response Team as per Office 
+          Order of Information and Communication Technology Department.
+      <br>National Data Center and network connectivity between all government
+       offices across the country has been setup to deliver e-services
+        at citizen's doorsteps. National Data Centers and online services 
+        of financial institutions are being hit by various cyber attacks. 
+        BGD e-GOV CIRT is conducting necessary activities under BCC to protect Critical 
+        Information Infrastructure (CII) from all these attacks.
+      <br>BGD e-GOV CIRT is responsible for maintaining cooperation and communication 
+          with international organizations, forums and CERT/CSIRT/CIRT of other 
+          countries engaged in cyber security for the purpose of securing the cyber 
+          space of Bangladesh.
+      <br>Bangladesh is currently ranked 36th in the National 
+      Cybersecurity Index and recognized as a Tier-1 Role Model country in the 
+      Global Cybersecurity Index (GCI) 2024, published by the International 
+      Telecommunication Union (ITU).</p>
+  </div>
+  <div class="latest-alerts">
+      <h2>Latest Alerts</h2>
+      <div class="alert-cards">
+          <div class="alert-card">
+              <img src="alert1.png" alt="Alert 1">
+              <p>Critical update: Cyber attack attempts detected in financial institutions.</p>
+              <button>Read More</button>
+          </div>
+          <div class="alert-card">
+              <img src="alert2.png" alt="Alert 2">
+              <p>National Data Center maintenance scheduled for next week.</p>
+              <button>Read More</button>
+          </div>
+          <div class="alert-card">
+              <img src="alert3.png" alt="Alert 3">
+              <p>New phishing scams targeting government employees discovered.</p>
+              <button>Read More</button>
+          </div>
+          <div class="alert-card">
+              <img src="alert4.png" alt="Alert 4">
+              <p>Guidelines released for secure remote working protocols.</p>
+              <button>Read More</button>
+          </div>
+          <div class="alert-card">
+              <img src="alert5.png" alt="Alert 5">
+              <p>Guidelines released for secure remote working protocols.</p>
+              <button>Read More</button>
+          </div>
+          
+
+      </div>
+      <div class="show-more">Show More</div>
+      <br><br><br>
+  </div>
+  <div class="magazine-section">
+      <h2>Magazine</h2>
+      <div class="magazine-cards">
+          <div class="magazine-card">
+              <img src="magazine1.png" alt="Magazine 1">
+              <p>Explore the latest trends in cybersecurity and IT management.</p>
+              <button>Read More</button>
+          </div>
+          <div class="magazine-card">
+              <img src="magazine2.png" alt="Magazine 2">
+              <p>Innovative solutions for protecting critical information systems.</p>
+              <button>Read More</button>
+          </div>
+          <div class="magazine-card">
+              <img src="magazine3.png" alt="Magazine 3">
+              <p>Comprehensive guide to secure online communications.</p>
+              <button>Read More</button>
+          </div>
+          <div class="magazine-card">
+              <img src="magazine4.png" alt="Magazine 4">
+              <p>Top strategies for mitigating data breaches effectively.</p>
+              <button>Read More</button>
+          </div>
+          <div class="magazine-card">
+              <img src="magazine5.png" alt="Magazine 5">
+              <p>Insights into emerging threats in the digital landscape.</p>
+              <button>Read More</button>
+          </div>
+      </div>
+      <div class="show-more">Show More</div>
+  </div>
+  <br><br><br>
+  <div class="articles-section">
+      <h2>Articles</h2>
+      <div class="articles-cards">
+          <div class="articles-card">
+              <img src="articles1.png" alt="Article 1">
+              <p>Key developments in global cybersecurity frameworks.</p>
+              <button>Read More</button>
+          </div>
+          <div class="articles-card">
+              <img src="articles2.png" alt="Article 2">
+              <p>Impact of AI on modern data security measures.</p>
+              <button>Read More</button>
+          </div>
+          <div class="articles-card">
+              <img src="articles3.png" alt="Article 3">
+              <p>Comprehensive analysis of recent ransomware attacks.</p>
+              <button>Read More</button>
+          </div>
+          <div class="articles-card">
+              <img src="articles4.png" alt="Article 4">
+              <p>Effective strategies for training employees in cybersecurity.</p>
+              <button>Read More</button>
+          </div>
+          <div class="articles-card">
+              <img src="articles5.png" alt="Article 5">
+              <p>Exploring the future of blockchain in digital identity protection.</p>
+              <button>Read More</button>
+          </div>
+          <div class="show-more">Show More</div>
+      </div>
+  </div>
+</section>
+<br><br>
+<div class="collaborations-wrapper">
+  <h2>Collaborations</h2>
+  <div class="collaborations-logos">
+      <div class="collaborations-logo">
+          <img src="logo1.png" alt="Logo 1">
+      </div>
+      <div class="collaborations-logo">
+          <img src="logo2.png" alt="Logo 2">
+      </div>
+      <div class="collaborations-logo">
+          <img src="logo3.png" alt="Logo 3">
+      </div>
+      <div class="collaborations-logo">
+          <img src="logo4.png" alt="Logo 4">
+      </div>
+      <div class="collaborations-logo">
+          <img src="logo5.png" alt="Logo 5">
+      </div>
+  </div>
+</div>   
+
+<div th:replace="~{fragments/footer :: footer}"></div>         
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
