@@ -21,7 +21,7 @@
             <!-- Left Side: Description -->
             <section class="description col-md-9">
                 <h1 th:text="${post.getTitle()}"> </h1>
-                <p th:utext="${post.getBody()}"> </p>
+                <div class="holder" th:utext="${post.body}"> </div>
             </section>
 
             <!-- Right Side: Related Posts -->
