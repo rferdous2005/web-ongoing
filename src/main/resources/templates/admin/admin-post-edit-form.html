@@ -19,7 +19,7 @@
     <div th:replace="~{fragments/admin-header :: menu}"></div>
 
     <div class= "container form-container">
-        <h2>Create a Post</h2>
+        <h2 class="custom-h2">Edit Post</h2>
         <form id="postForm" method="post" th:action="@{/admin/post}" th:object="${post}">
             <!-- Title -->
             <div class="mb-3">

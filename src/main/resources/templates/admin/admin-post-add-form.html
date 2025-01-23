@@ -20,7 +20,7 @@
     <div th:replace="~{fragments/admin-header :: menu}"></div>
 
     <div class= "container form-container">
-        <h2>Create a Post</h2>
+        <h2 class="custom-h2">Create a Post</h2>
         <form id="postForm" method="post" th:action="@{/admin/post}" th:object="${post}">
             <!-- Title -->
             <div class="mb-3">
@@ -59,11 +59,14 @@
 
             <!-- Rich Text Editor -->
             <label for="bodyDescription" class="col-form-label"><strong>Post Body</strong></label> &nbsp;&nbsp;
+            <button id="showInsertImageButton" style="display: none;" type="button" class="btn btn-warning mb-2" onclick="clickedInsertImage()"> + IMG </button>
             <button id="showHtmlButton" type="button" class="btn btn-danger mb-2" onclick="clickedShowHtml()"> Show Html </button>
             <button id="showBeautifiedButton" type="button" class="btn btn-success mb-2" onclick="clickedShowBeautified()" disabled> Show Beautified </button>
-            <div class="" id="bodyDescription">
-                    
-            </div>
+            <section style="position:relative;margin-top:5em;border:solid 1px red;">
+                <div id="bodyDescriptionContainer" style="height:10em; min-height:100%; overflow-y:auto;margin-top:5em">
+                   <div id="bodyDescription" style="min-height:100%; height:auto;"></div>
+                </div>
+            </section>
             <textarea hidden th:field="*{body}" id="bodyDescriptionHtml"></textarea>
             <!-- Visibility -->
             <div class="mb-3">
