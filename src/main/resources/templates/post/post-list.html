@@ -18,7 +18,7 @@
     <!-- Page Header -->
     <header>
       <div class="container">
-          <h1 th:text="${category} + ' by BGD e-GOV CIRT'">Posts</h1>
+          <h1 th:text="${categoryCap} + ' by BGD e-GOV CIRT'">Posts</h1>
           <p>Explore the latest articles and tips for certification success.</p>
       </div>
     </header>
@@ -34,7 +34,7 @@
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="card-title">
                             <h4 th:text="${post.getTitle()}">Post Title</h4>
                         </a>
-                        <p class="card-text">Learn about the top AWS certifications to boost your career in cloud computing.</p>
+                        <p class="card-text" th:text="${post.getSubTitle()}"></p>
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn btn-success">Read More</a>
                     </div>
                 </div>
@@ -42,8 +42,8 @@
         </div>
         <!-- Pagination -->
         <div class="pagination text-center mt-4">
-            <a th:href="@{/posts(page=${currentPage - 1})}" th:if="${currentPage > 0}">Previous</a>
-            <a th:href="@{/posts(page=${currentPage + 1})}" th:if="${currentPage < totalPage - 1}">Next</a>
+            <a th:href="'/'+${category}+'?page='+${currentPage - 1}" th:if="${currentPage > 0}">Previous</a>
+            <a th:href="'/'+${category}+'?page='+${currentPage + 1}" th:if="${currentPage < totalPage - 1}">Next</a>
         </div>
     </div>
 

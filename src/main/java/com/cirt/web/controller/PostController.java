@@ -26,7 +26,8 @@ public class PostController {
     @GetMapping("/{category}")
     public String showPostListCategorywise(@PathVariable("category") String category, @RequestParam(defaultValue = "0") int page, Model model) {
         String categoryCap = category.substring(0, 1).toUpperCase() + category.substring(1);
-        model.addAttribute("category", categoryCap);
+        model.addAttribute("categoryCap", categoryCap);
+        model.addAttribute("category", category);
         model.addAttribute("t", categoryCap +" | BGD e-GOV CIRT");
 
         Page<Post> postListPaged = postService.getPaginatedPostsForPublic(category, PageRequest.of(page, PAGE_SIZE, Sort.by(Sort.Direction.DESC, "publishedAt")));
