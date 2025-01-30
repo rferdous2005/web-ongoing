@@ -21,7 +21,7 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    private final int PAGE_SIZE = 5;
+    private final int PAGE_SIZE = 6;
 
     @GetMapping("/{category}")
     public String showPostListCategorywise(@PathVariable("category") String category, @RequestParam(defaultValue = "0") int page, Model model) {

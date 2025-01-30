@@ -29,13 +29,13 @@
             <!-- Post Item -->
             <div class="col-md-6 col-lg-4 mb-4" th:each="post : ${postList}">
                 <div class="card h-100">
-                    <img th:src="'/assets/images/thumbnails/' + ${category} + '.png'" th:if="${post.getThumbnail() == 'null'}" class="card-img-top" alt="Post Image">
-                    <img th:src="'/media?id=' + ${post.getThumbnail()}" th:unless="${post.getThumbnail() == 'null'}" class="card-img-top" alt="Post Image">
+                    <img th:src="'/assets/images/thumbnails/' + ${category} + '.png'" th:if="${post.getThumbnail() == null or post.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                    <img th:src="'/media?id=' + ${post.getThumbnail()}" th:unless="${post.getThumbnail() == null or post.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
                     <div class="card-body">
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="card-title">
                             <h4 th:text="${post.getTitle()}">Post Title</h4>
                         </a>
-                        <p class="card-text" th:text="${post.getSubTitle()}"></p>
+                        <p class="card-text" th:text="${#strings.substring(post.getSubTitle(), 0, 100)}"></p>
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn btn-success">Read More</a>
                     </div>
                 </div>
