@@ -35,7 +35,7 @@
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="card-title">
                             <h4 th:text="${post.getTitle()}">Post Title</h4>
                         </a>
-                        <p class="card-text" th:text="${#strings.substring(post.getSubTitle(), 0, 100)}"></p>
+                        <p class="card-text" th:text="${#strings.substring(post.getSubTitle(), 0, 10)}"></p>
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn btn-success">Read More</a>
                     </div>
                 </div>
