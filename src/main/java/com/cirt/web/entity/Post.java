@@ -29,11 +29,14 @@ public class Post {
     @Column(name = "title", nullable = false, length = 300)
     private String title;
 
-    @Column(name = "sub_title", nullable = false, length = 300)
+    @Column(name = "sub_title", nullable = false, length = 4096)
     private String subTitle;
 
     @Column(name = "uri", nullable = false, length = 300)
     private String uri;
+
+    @Column(name = "thumbnail", nullable = true, length = 100)
+    private String thumbnail;
 
     //@Column(name = "body", nullable = false, length = 65535)
     @Lob

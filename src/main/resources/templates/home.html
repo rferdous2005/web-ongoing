@@ -9,6 +9,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
+  <link rel="stylesheet" href="/assets/css/homepage.css">
 
 
   <style>
@@ -19,10 +20,161 @@
   </style>
 </head>
 <body>
-
 <!-- Navigation Bar -->
 <div th:replace="~{fragments/header :: menu}"></div>
-<div th:replace="~{fragments/footer :: footer}"></div>
+
+
+<section class="hesec-hero">
+  <div class="hesec-hero-content">
+      <h1>BGD e-GOV CIRT</h1>
+      <p>N-CERT of Bangladesh</p>
+      <a href="/who-we-are"><button>Learn More</button></a>
+  </div>
+</section>
+<section class="container mt-5">
+    <h2> Our Pioneers </h2>
+    <div class="row p-5" style="background-color: antiquewhite;border-radius: 18px;">
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="John Doe" height="128" width="128">
+            <h3>John Doe</h3>
+            <p>Product Manager</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Jane Smith" height="128" width="128">
+            <h3>Jane Smith</h3>
+            <p>Technical Product Manager</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Technical Specialist</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Software Engineer</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Software Engineer</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Software Engineer</p>
+        </div>
+    </div>
+  <div class="hesec-description container">
+      <h2>Description</h2>
+      <p>In response to the cyber-attack on Bangladesh Bank in February 2016, 
+          the Government of Bangladesh's Computer Incident Response Team, 
+          known as BGD e-GOV CIRT, was established in March 2016 under 
+          Section 6 of the BCC Act 1990, as a proactive initiative
+           by the Information and Communication Technology Division.
+      <br>Also, Section 9 of the Cyber Security Act, 2023 directs the formation of a 
+          National Computer Emergency Response Team (N-CERT) under the 
+          National Cyber Security Agency. BGD e-GOV CIRT has been given additional 
+          responsibility of National Computer Emergency Response Team as per Office 
+          Order of Information and Communication Technology Department.
+      <br>National Data Center and network connectivity between all government
+       offices across the country has been setup to deliver e-services
+        at citizen's doorsteps. National Data Centers and online services 
+        of financial institutions are being hit by various cyber attacks. 
+        BGD e-GOV CIRT is conducting necessary activities under BCC to protect Critical 
+        Information Infrastructure (CII) from all these attacks.
+      <br>BGD e-GOV CIRT is responsible for maintaining cooperation and communication 
+          with international organizations, forums and CERT/CSIRT/CIRT of other 
+          countries engaged in cyber security for the purpose of securing the cyber 
+          space of Bangladesh.
+      <br>Bangladesh is currently ranked 36th in the National 
+      Cybersecurity Index and recognized as a Tier-1 Role Model country in the 
+      Global Cybersecurity Index (GCI) 2024, published by the International 
+      Telecommunication Union (ITU).</p>
+  </div>
+  <div class="container">
+      <h2>Latest Alerts</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-2" th:each="alert : ${alertsList}">
+            <div class="card h-100">
+                <img src="/assets/images/thumbnails/alerts.png" th:if="${alert.getThumbnail() == null or alert.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <img th:src="${alert.getThumbnail()}" th:unless="${alert.getThumbnail() == null or alert.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                    <a th:href="'/'+${alert.getCategory()}+'/'+${alert.getUri()}" class="card-title">
+                        <h4 th:text="${alert.getTitle()}">Post Title</h4>
+                    </a>
+                    <p class="card-text" th:text="${#strings.substring(alert.getSubTitle(), 0, 150)} + '....'"></p>
+                    <a th:href="'/'+${alert.getCategory()}+'/'+${alert.getUri()}" class="btn btn-success">Read More</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <a class="show-more" href="/alerts">Show More</a>
+      <br/><br/>
+  </div>
+  <div class="container">
+      <h2>Magazines</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-2" th:each="magazine : ${magazinesList}">
+            <div class="card h-100">
+                <img th:src="'/assets/images/thumbnails/' + ${category} + '.png'" th:if="${magazine.getThumbnail() == null or magazine.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <img th:src="${magazine.getThumbnail()}" th:unless="${magazine.getThumbnail() == null or magazine.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                    <a th:href="'/'+${magazine.getCategory()}+'/'+${magazine.getUri()}" class="card-title">
+                        <h4 th:text="${magazine.getTitle()}">Post Title</h4>
+                    </a>
+                    <p class="card-text" th:text="${#strings.substring(magazine.getSubTitle(), 0, 150)} + '....'"></p>
+                    <a th:href="'/'+${magazine.getCategory()}+'/'+${magazine.getUri()}" class="btn btn-success">Read More</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <a class="show-more" href="/magazines">Show More</a>
+  </div>
+  <br/><br/>
+  <div class="container">
+      <h2>News & Events</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-3" th:each="news : ${newsList}">
+            <div class="card h-100">
+                <img src="/assets/images/thumbnails/news.png" th:if="${news.getThumbnail() == null or news.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <img th:src="${news.getThumbnail()}" th:unless="${news.getThumbnail() == null or news.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                    <a th:href="'/'+${news.getCategory()}+'/'+${news.getUri()}" class="card-title">
+                        <h4 th:text="${news.getTitle()}">Post Title</h4>
+                    </a>
+                    <p class="card-text" th:text="${#strings.substring(news.getSubTitle(), 0, 150)} + '....'"></p>
+                    <a th:href="'/'+${news.getCategory()}+'/'+${news.getUri()}" class="btn btn-success">Read More</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <a class="show-more" href="/news">Show More</a>
+  </div>
+</section>
+<br/><br/>
+<div class="container mb-3">
+  <h2> Collaborations With </h2>
+  <div class="row">
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (1).png" alt="Logo 1" height="100" width="150">
+      </div>
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (2).png" alt="Logo 2" height="100" width="150">
+      </div>
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (3).png" alt="Logo 3" height="100" width="150">
+      </div>
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (4).png" alt="Logo 4" height="100" width="150">
+      </div>
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (5).png" alt="Logo 5" height="100" width="150">
+      </div>
+  </div>
+</div>   
+
+<div th:replace="~{fragments/footer :: footer}"></div>         
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

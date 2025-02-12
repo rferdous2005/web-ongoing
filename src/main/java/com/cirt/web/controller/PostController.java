@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.cirt.web.dto.MediaDto;
-import com.cirt.web.entity.Media;
 import com.cirt.web.entity.Post;
 import com.cirt.web.service.PostService;
 
@@ -23,7 +21,7 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    private final int PAGE_SIZE = 1;
+    private final int PAGE_SIZE = 6;
 
     @GetMapping("/{category}")
     public String showPostListCategorywise(@PathVariable("category") String category, @RequestParam(defaultValue = "0") int page, Model model) {
@@ -41,11 +39,33 @@ public class PostController {
         model.addAttribute("page", page);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPage", postListPaged.getTotalPages());
-        return "post/post-list";
+        switch (category) {
+            case "alerts":
+            case "advisories":
+            case "bulletins":
+            case "acts":
+            case "policies":
+            case "notices":
+            case "news":
+            case "events":
+            case "articles":
+            case "magazines":
+            case "guidelines":
+            case "documents":
+                return "post/post-list";
+            default:
+                return "404";
+        }
+        
     }
 
     @GetMapping("/{category}/{post-uri}")
-    public void showSinglePost(@PathVariable("post-uri") String uri) {
-
+    public String showSinglePost(@PathVariable("category") String category, @PathVariable("post-uri") String uri, Model model) {
+        Post returnedPost = postService.findSinglePostForPublic(category, uri).orElse(null);
+        if(returnedPost == null) {
+            return "404";
+        }
+        model.addAttribute("post", returnedPost);
+        return "post/single-post";
     }
 }

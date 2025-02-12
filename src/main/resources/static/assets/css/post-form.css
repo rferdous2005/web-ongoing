@@ -16,7 +16,7 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-h2 {
+.custom-h2 {
     font-weight: 700;
     color: #fff;
     text-align: center;
@@ -70,7 +70,7 @@ h2 {
     background-color: #2b6cb0;
 }
 
-.file-uploader {
+#fileUpload {
     margin-bottom: 20px;
 }
 
@@ -130,3 +130,5 @@ select {
         transform: scale(1);
     }
 }
+
+.ql-toolbar { position: absolute; top: 0;left:0;right:0}
