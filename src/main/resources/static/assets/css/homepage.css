@@ -17,7 +17,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('/assets/images/hero-1.png') center/cover no-repeat;
+    background: url('/assets/images/hero-3.png') center/cover no-repeat;
     overflow: hidden;
     animation: hesec-backgroundMove 10s infinite alternate ease-in-out;
 }
@@ -137,58 +137,26 @@ h2::after {
     margin: 15px auto 0;
     border-radius: 2px;
 }
-
-/* Dynamic Flexbox Layout */
-.hesec-team-members-inline, .alert-cards, .magazine-cards, .articles-cards, .collaborations-logos {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin: 0 auto;
-    padding: 30px;
-    max-width: 1200px;
-    background: #fff;
+.card {
+    border: none;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Card Styles */
-.hesec-team-member, .alert-card, .magazine-card, .articles-card, .collaborations-logo {
-    flex: 1 1 calc(20% - 25px);
-    max-width: calc(20% - 25px);
-    background: linear-gradient(to bottom, #ffffff, #f1f1f1);
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 25px;
-    text-align: center;
     overflow: hidden;
-    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white; /* Keeps cards contrasting against the green container */
+    color: #333;
 }
 
-.hesec-team-member:hover, .alert-card:hover, .magazine-card:hover, .articles-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to bottom, #e8f4ff, #ffffff);
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 2px solid green; /* Highlight card border on hover */
 }
-
-.hesec-team-member img, .alert-card img, .magazine-card img, .articles-card img, .collaborations-logo img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
-}
-
-.hesec-team-member img:hover, .alert-card img:hover, .magazine-card img:hover, .articles-card img:hover {
-    transform: scale(1.05);
-}
-
-.hesec-team-member h3, .alert-card p, .magazine-card p, .articles-card p {
-    font-size: 1.2rem;
-    color: #444;
-    margin-bottom: 10px;
-    font-weight: 500;
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 4px solid green; /* Matches the green theme */
+    border-radius: 12px 12px 0 0;
 }
 
 /* Buttons */

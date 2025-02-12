@@ -19,7 +19,7 @@
     <header>
       <div class="container">
           <h1 th:text="${categoryCap} + ' by BGD e-GOV CIRT'">Posts</h1>
-          <p>Explore the latest articles and tips for certification success.</p>
+          <!-- <p>Explore the latest articles and tips for certification success.</p> -->
       </div>
     </header>
 
@@ -30,12 +30,12 @@
             <div class="col-md-6 col-lg-4 mb-4" th:each="post : ${postList}">
                 <div class="card h-100">
                     <img th:src="'/assets/images/thumbnails/' + ${category} + '.png'" th:if="${post.getThumbnail() == null or post.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
-                    <img th:src="'/media?id=' + ${post.getThumbnail()}" th:unless="${post.getThumbnail() == null or post.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                    <img th:src="${post.getThumbnail()}" th:unless="${post.getThumbnail() == null or post.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
                     <div class="card-body">
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="card-title">
                             <h4 th:text="${post.getTitle()}">Post Title</h4>
                         </a>
-                        <p class="card-text" th:text="${#strings.substring(post.getSubTitle(), 0, 10)}"></p>
+                        <p class="card-text" th:text="${#strings.substring(post.getSubTitle(), 0, 150)} + '....'"></p>
                         <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn btn-success">Read More</a>
                     </div>
                 </div>

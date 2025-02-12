@@ -59,7 +59,7 @@
             </div>
 
             <label for="fileUpload" class="file-label">Upload File</label>
-            <input type="file" class="form-control" id="fileUpload" th:field="*{thumbnail}">
+            <input type="text" class="form-control" id="fileUpload" th:field="*{thumbnail}">
 
             <!-- Rich Text Editor -->
             <label for="bodyDescription" class="col-form-label"><strong>Post Body</strong></label> &nbsp;&nbsp;
@@ -84,7 +84,7 @@
             <!-- Publication Time -->
             <div class="mb-3">
                 <label for="publicationTime" class="form-label">Publish Time</label>
-                <input type="datetime-local" class="form-control" th:field="*{publishedAt}">
+                <input type="datetime-local" class="form-control" th:field="*{publishedAt}" th:value="${post.publishedAt}">
             </div>
 
             <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>

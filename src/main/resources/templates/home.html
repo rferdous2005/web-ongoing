@@ -28,43 +28,44 @@
   <div class="hesec-hero-content">
       <h1>BGD e-GOV CIRT</h1>
       <p>N-CERT of Bangladesh</p>
-      <button>Learn More</button>
+      <a href="/who-we-are"><button>Learn More</button></a>
   </div>
 </section>
-<section class="hesec-merged-section">
-  <div class="hesec-team-members-inline">
-      <div class="hesec-team-member">
-          <img src="/assets/images/male-face.png" alt="John Doe">
-          <h3>John Doe</h3>
-          <p>Lead Designer</p>
-      </div>
-      <div class="hesec-team-member">
-          <img src="/assets/images/male-face.png" alt="Jane Smith">
-          <h3>Jane Smith</h3>
-          <p>Project Manager</p>
-      </div>
-      <div class="hesec-team-member">
-          <img src="/assets/images/male-face.png" alt="Emily Johnson">
-          <h3>Emily Johnson</h3>
-          <p>Software Engineer</p>
-      </div>
-      <div class="hesec-team-member">
-          <img src="/assets/images/male-face.png" alt="Emily Johnson">
-          <h3>Emily Johnson</h3>
-          <p>Software Engineer</p>
-      </div>
-      <div class="hesec-team-member">
-          <img src="/assets/images/male-face.png" alt="Emily Johnson">
-          <h3>Emily Johnson</h3>
-          <p>Software Engineer</p>
-      </div>
-      <div class="hesec-team-member">
-          <img src="/assets/images/male-face.png" alt="Emily Johnson">
-          <h3>Emily Johnson</h3>
-          <p>Software Engineer</p>
-      </div>
-  </div>
-  <div class="hesec-description">
+<section class="container mt-5">
+    <h2> Our Pioneers </h2>
+    <div class="row p-5" style="background-color: antiquewhite;border-radius: 18px;">
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="John Doe" height="128" width="128">
+            <h3>John Doe</h3>
+            <p>Technical Product Manager</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Jane Smith" height="128" width="128">
+            <h3>Jane Smith</h3>
+            <p>Technical Specialist</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Software Engineer</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Software Engineer</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Software Engineer</p>
+        </div>
+        <div class="col-md-6 col-lg-4 text-center">
+            <img src="/assets/images/male-face.png" alt="Emily Johnson" height="128" width="128">
+            <h3>Emily Johnson</h3>
+            <p>Software Engineer</p>
+        </div>
+    </div>
+  <div class="hesec-description container">
       <h2>Description</h2>
       <p>In response to the cyber-attack on Bangladesh Bank in February 2016, 
           the Government of Bangladesh's Computer Incident Response Team, 
@@ -91,122 +92,84 @@
       Global Cybersecurity Index (GCI) 2024, published by the International 
       Telecommunication Union (ITU).</p>
   </div>
-  <div class="latest-alerts">
+  <div class="container">
       <h2>Latest Alerts</h2>
-      <div class="alert-cards">
-          <div class="alert-card">
-              <img src="alert1.png" alt="Alert 1">
-              <p>Critical update: Cyber attack attempts detected in financial institutions.</p>
-              <button>Read More</button>
-          </div>
-          <div class="alert-card">
-              <img src="alert2.png" alt="Alert 2">
-              <p>National Data Center maintenance scheduled for next week.</p>
-              <button>Read More</button>
-          </div>
-          <div class="alert-card">
-              <img src="alert3.png" alt="Alert 3">
-              <p>New phishing scams targeting government employees discovered.</p>
-              <button>Read More</button>
-          </div>
-          <div class="alert-card">
-              <img src="alert4.png" alt="Alert 4">
-              <p>Guidelines released for secure remote working protocols.</p>
-              <button>Read More</button>
-          </div>
-          <div class="alert-card">
-              <img src="alert5.png" alt="Alert 5">
-              <p>Guidelines released for secure remote working protocols.</p>
-              <button>Read More</button>
-          </div>
-          
-
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-2" th:each="alert : ${alertsList}">
+            <div class="card h-100">
+                <img src="/assets/images/thumbnails/alerts.png" th:if="${alert.getThumbnail() == null or alert.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <img th:src="${alert.getThumbnail()}" th:unless="${alert.getThumbnail() == null or alert.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                    <a th:href="'/'+${alert.getCategory()}+'/'+${alert.getUri()}" class="card-title">
+                        <h4 th:text="${alert.getTitle()}">Post Title</h4>
+                    </a>
+                    <p class="card-text" th:text="${#strings.substring(alert.getSubTitle(), 0, 150)} + '....'"></p>
+                    <a th:href="'/'+${alert.getCategory()}+'/'+${alert.getUri()}" class="btn btn-success">Read More</a>
+                </div>
+            </div>
+        </div>
       </div>
-      <div class="show-more">Show More</div>
-      <br><br><br>
+      <a class="show-more" href="/alerts">Show More</a>
+      <br/><br/>
   </div>
-  <div class="magazine-section">
-      <h2>Magazine</h2>
-      <div class="magazine-cards">
-          <div class="magazine-card">
-              <img src="magazine1.png" alt="Magazine 1">
-              <p>Explore the latest trends in cybersecurity and IT management.</p>
-              <button>Read More</button>
-          </div>
-          <div class="magazine-card">
-              <img src="magazine2.png" alt="Magazine 2">
-              <p>Innovative solutions for protecting critical information systems.</p>
-              <button>Read More</button>
-          </div>
-          <div class="magazine-card">
-              <img src="magazine3.png" alt="Magazine 3">
-              <p>Comprehensive guide to secure online communications.</p>
-              <button>Read More</button>
-          </div>
-          <div class="magazine-card">
-              <img src="magazine4.png" alt="Magazine 4">
-              <p>Top strategies for mitigating data breaches effectively.</p>
-              <button>Read More</button>
-          </div>
-          <div class="magazine-card">
-              <img src="magazine5.png" alt="Magazine 5">
-              <p>Insights into emerging threats in the digital landscape.</p>
-              <button>Read More</button>
-          </div>
+  <div class="container">
+      <h2>Magazines</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-2" th:each="magazine : ${magazinesList}">
+            <div class="card h-100">
+                <img th:src="'/assets/images/thumbnails/' + ${category} + '.png'" th:if="${magazine.getThumbnail() == null or magazine.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <img th:src="${magazine.getThumbnail()}" th:unless="${magazine.getThumbnail() == null or magazine.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                    <a th:href="'/'+${magazine.getCategory()}+'/'+${magazine.getUri()}" class="card-title">
+                        <h4 th:text="${magazine.getTitle()}">Post Title</h4>
+                    </a>
+                    <p class="card-text" th:text="${#strings.substring(magazine.getSubTitle(), 0, 150)} + '....'"></p>
+                    <a th:href="'/'+${magazine.getCategory()}+'/'+${magazine.getUri()}" class="btn btn-success">Read More</a>
+                </div>
+            </div>
+        </div>
       </div>
-      <div class="show-more">Show More</div>
+      <a class="show-more" href="/magazines">Show More</a>
   </div>
-  <br><br><br>
-  <div class="articles-section">
-      <h2>Articles</h2>
-      <div class="articles-cards">
-          <div class="articles-card">
-              <img src="articles1.png" alt="Article 1">
-              <p>Key developments in global cybersecurity frameworks.</p>
-              <button>Read More</button>
-          </div>
-          <div class="articles-card">
-              <img src="articles2.png" alt="Article 2">
-              <p>Impact of AI on modern data security measures.</p>
-              <button>Read More</button>
-          </div>
-          <div class="articles-card">
-              <img src="articles3.png" alt="Article 3">
-              <p>Comprehensive analysis of recent ransomware attacks.</p>
-              <button>Read More</button>
-          </div>
-          <div class="articles-card">
-              <img src="articles4.png" alt="Article 4">
-              <p>Effective strategies for training employees in cybersecurity.</p>
-              <button>Read More</button>
-          </div>
-          <div class="articles-card">
-              <img src="articles5.png" alt="Article 5">
-              <p>Exploring the future of blockchain in digital identity protection.</p>
-              <button>Read More</button>
-          </div>
-          <div class="show-more">Show More</div>
+  <br/><br/>
+  <div class="container">
+      <h2>News & Events</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-3" th:each="news : ${newsList}">
+            <div class="card h-100">
+                <img src="/assets/images/thumbnails/news.png" th:if="${news.getThumbnail() == null or news.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <img th:src="${news.getThumbnail()}" th:unless="${news.getThumbnail() == null or news.getThumbnail() == ''}" class="card-img-top" alt="Post Image">
+                <div class="card-body">
+                    <a th:href="'/'+${news.getCategory()}+'/'+${news.getUri()}" class="card-title">
+                        <h4 th:text="${news.getTitle()}">Post Title</h4>
+                    </a>
+                    <p class="card-text" th:text="${#strings.substring(news.getSubTitle(), 0, 150)} + '....'"></p>
+                    <a th:href="'/'+${news.getCategory()}+'/'+${news.getUri()}" class="btn btn-success">Read More</a>
+                </div>
+            </div>
+        </div>
       </div>
+      <a class="show-more" href="/news">Show More</a>
   </div>
 </section>
-<br><br>
-<div class="collaborations-wrapper">
-  <h2>Collaborations</h2>
-  <div class="collaborations-logos">
-      <div class="collaborations-logo">
-          <img src="logo1.png" alt="Logo 1">
+<br/><br/>
+<div class="container mb-3">
+  <h2> Collaborations With </h2>
+  <div class="row">
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (1).png" alt="Logo 1" height="100" width="150">
       </div>
-      <div class="collaborations-logo">
-          <img src="logo2.png" alt="Logo 2">
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (2).png" alt="Logo 2" height="100" width="150">
       </div>
-      <div class="collaborations-logo">
-          <img src="logo3.png" alt="Logo 3">
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (3).png" alt="Logo 3" height="100" width="150">
       </div>
-      <div class="collaborations-logo">
-          <img src="logo4.png" alt="Logo 4">
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (4).png" alt="Logo 4" height="100" width="150">
       </div>
-      <div class="collaborations-logo">
-          <img src="logo5.png" alt="Logo 5">
+      <div class="col-md-2 text-center">
+          <img src="/assets/images/collaboration-logo (5).png" alt="Logo 5" height="100" width="150">
       </div>
   </div>
 </div>   
