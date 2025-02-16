@@ -106,4 +106,8 @@ public class BasicController {
         outStream.close();
     }
 
+    @GetMapping("/login")
+    public String loginPage(Model model, HttpServletRequest request) {
+        return "basic/login-form";
+    }
 }
