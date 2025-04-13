@@ -2,7 +2,7 @@
 
 /* General Navbar Styling */
 .navbar {
-  background-color: #edfafa; /* White background */
+  background-color: #e6eafa; /* White background */
   border-bottom: 2px solid #e5e5e5; /* Light border for professional look */
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
@@ -26,7 +26,7 @@
   color: #555555; /* Neutral color for links */
   font-size: 1rem;
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: bold;
   transition: all 0.3s ease;
   margin-right: 18px;
 }
@@ -34,8 +34,8 @@
 .nav-link:hover, 
 .nav-link:focus,
 .nav-link.show:focus {
-  color: whitesmoke; /* Professional blue on hover */
-  background-color: green;
+  color: blue; /* Professional blue on hover */
+  background-color: rgb(224, 223, 223);
   border-radius: 9px;
   transform: scale(1.2); /* Zoom effect on hover */
 }
@@ -55,9 +55,10 @@
 
 .dropdown-item:hover, 
 .dropdown-item:focus {
-  color: #ffffff;
-  background-color: green; /* Blue background with white text */
+  color: #3b40bb;
+  background-color: rgb(200, 200, 201); /* Blue background with white text */
   transform: scale(1.1); /* Zoom effect for dropdown items */
+  font-weight: bold;
 }
 
 .navbar-toggler {
@@ -72,10 +73,10 @@
 /* Hover Effects for Dropdown */
 .dropdown:hover .dropdown-menu {
   display: block;
-  opacity: 1; /* Ensure dropdown is visible on hover */
-  transform: translateY(0); /* Smooth dropdown appearance */
+  opacity: 1; 
+  transform: translateY(0); 
 }
 
 .dropdown-item:active {
-  background-color: #39e742; /* Darker blue for active */
+  background-color: #b7bdb7; 
 }

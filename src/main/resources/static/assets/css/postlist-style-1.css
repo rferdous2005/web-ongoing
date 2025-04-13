@@ -3,7 +3,7 @@
     padding: 20px;
     margin: auto;
     max-width: 1200px;
-    background-color: rgb(217, 247, 217); /* Added green background */
+    background-color: rgb(217, 218, 247); /* Added green background */
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow */
     animation: fadeIn 0.8s ease-in-out;
@@ -13,7 +13,7 @@
 
 /* Page Header Styling */
 header {
-    background: linear-gradient(135deg, green, #004d00); /* Gradient green background for a dynamic effect */
+    background: linear-gradient(90deg, #232a84, #3b50a1);
     color: white;
     padding: 40px 20px;
     border-radius: 8px;
@@ -47,13 +47,13 @@ header p {
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border: 2px solid green; /* Highlight card border on hover */
+    border: 2px solid #0150b1; /* Highlight card border on hover */
 }
 
 .card-img-top {
     height: 200px;
     object-fit: cover;
-    border-bottom: 4px solid green; /* Matches the green theme */
+    border-bottom: 4px solid rgb(40, 30, 230); /* Matches the green theme */
     border-radius: 12px 12px 0 0;
 }
 
@@ -61,14 +61,16 @@ header p {
 .card-title {
     font-size: 1.25rem;
     font-weight: bold;
-    color: green; /* Matches the page theme */
+    color: rgb(0, 5, 107); /* Matches the page theme */
     margin-bottom: 10px;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .card-title:hover {
-    color: #004d00; /* Darker green for hover effect */
+    color: #4049ad; /* Darker green for hover effect */
+    text-decoration: underline;
+    
 }
 
  .card-text {
@@ -80,7 +82,7 @@ header p {
 
 /* Button Styling */
 .btn-success {
-    background-color: green;
+    background-color: rgb(3, 3, 197);
     border: none;
     border-radius: 50px;
     padding: 10px 20px;
@@ -92,7 +94,7 @@ header p {
 }
 
 .btn-success:hover {
-    background-color: #004d00; /* Darker green for hover */
+    background-color: #030862; /* Darker green for hover */
     transform: scale(1.05);
 }
 
@@ -102,14 +104,14 @@ header p {
     margin: 0 5px;
     padding: 8px 16px;
     color: white;
-    background-color: green;
+    background-color: rgb(3, 25, 153);
     border-radius: 8px;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .pagination a:hover {
-    background-color: #004d00; /* Darker green for hover effect */
+    background-color: rgb(3, 25, 153); /* Darker green for hover effect */
     transform: scale(1.1);
 }
 

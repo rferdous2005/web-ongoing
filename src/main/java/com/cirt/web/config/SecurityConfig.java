@@ -1,6 +1,4 @@
 package com.cirt.web.config;
-
-
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;

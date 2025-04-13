@@ -1,0 +1,50 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f6fa;
+    color: #333;
+  }
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  .tab {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    background: #ebe4e4;
+    margin-right: 5px;
+    border-radius: 8px 8px 0 0;
+    transition: background 0.3s;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  .tab.active {
+    background: #3636b2;
+    color: white;
+    font-weight: bold;
+  }
+  .tab-content {
+    display: none;
+    padding: 1.5rem;
+    border-radius: 0 0 10px 10px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 600px) {
+    .tabs {
+      flex-direction: column;
+    }
+    .tab {
+      margin-bottom: 5px;
+    }
+  }

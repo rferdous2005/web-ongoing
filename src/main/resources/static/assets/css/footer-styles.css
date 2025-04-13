@@ -8,7 +8,7 @@
 /* Footer Headings */
 .footer h5.text-head {
   font-weight: bold;
-  color: #39e742; /* Professional green color for headings */
+  color: #b0c1feea; /* Professional green color for headings */
   margin-bottom: 10px; /* Space below each heading */
 }
 
@@ -22,7 +22,7 @@
 .footer ul li {
   margin-bottom: 5px; /* Reduced space between list items */
   transition: transform 0.3s ease; /* Smooth transition for hover effect */
-  color: rgba(255, 255, 255, 0.8); /* Default text color */
+  color: whitesmoke; /* Default text color */
   font-size: 15px; /* Set font size */
 }
 
@@ -63,7 +63,7 @@
 }
 
 .social-icons a:hover {
-  background-color: #39e742; /* Highlight color for hover effect */
+  background-color: #3973e7; /* Highlight color for hover effect */
   transform: scale(1.1); /* Slight scaling of the icon's container */
 }
 
@@ -74,7 +74,7 @@
 
 /* Button Styling */
 .btn-pink {
-  background-color: #39e742;
+  background-color: #3970e7;
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
@@ -82,8 +82,8 @@
 }
 
 .btn-pink:hover {
-  background-color: #39e742;
-  box-shadow: 0 4px 10px rgba(26, 203, 76, 0.5);
+  background-color: #3153ed;
+  box-shadow: 0 4px 10px rgba(26, 58, 203, 0.5);
 }
 
 /* Footer Bottom Text */

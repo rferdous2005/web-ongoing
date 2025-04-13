@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services | BGD e-GOV CIRT</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/service-styles.css}">
+  <link th:href="@{/assets/images/favicon.ico}" rel="icon">
+</head>
+<body>
+  <div th:replace="~{fragments/header :: menu}"></div>
+  <div class="tab-wrapper">
+    <div class="tabs mt-3" id="tabBar">
+      <a class="tab" href="#vapt" data-tab="vapt">Vulnerability Assessment & Penetration Testing (VAPT)</a>
+      <a class="tab" href="#ca" data-tab="ca">Certifying Authority (CA)</a>
+      <a class="tab" href="#it-audit" data-tab="it-audit">IT Audit & Risk Assessment</a>
+      <a class="tab" href="#forensics" data-tab="forensics">Digital Forensics</a>
+      <a class="tab" href="#data-center" data-tab="data-center">Data Center Operations</a>
+      <a class="tab" href="#cti" data-tab="cti">Cyber Threat Intelligence (CTI)</a>
+      <a class="tab" href="#cyber-gym" data-tab="cyber-gym">Training Program with Cyber Gym</a>
+    </div>
+  </div>
+  <div id="vapt" class="tab-content active m-1">
+    <h2>Vulnerability Assessment & Penetration Testing (VAPT)</h2>
+    <p><img th:src="@{/assets/images/service-sample (1).png}" /></p>
+  </div>
+
+  <div id="ca" class="tab-content m-1">
+    <h2>Certifying Authority (CA)</h2>
+    <p><img th:src="@{/assets/images/service-sample (2).png}" /></p>
+  </div>
+
+  <div id="it-audit" class="tab-content m-1">
+    <h2>IT Audit & Risk Assessment</h2>
+    <p><img th:src="@{/assets/images/service-sample (3).png}" /></p>
+  </div>
+
+  <div id="forensics" class="tab-content m-1">
+    <h2>Digital Forensics</h2>
+    <p><img th:src="@{/assets/images/service-sample (4).png}" /></p>
+  </div>
+  <div id="data-center" class="tab-content m-1">
+    <h2>Data Center Operations</h2>
+    <p><img th:src="@{/assets/images/service-sample (5).png}" /></p>
+  </div>
+  <div id="cti" class="tab-content m-1">
+    <h2>Cyber Threat Intelligence (CTI)</h2>
+    <p><img th:src="@{/assets/images/service-sample (6).png}" /></p>
+  </div>
+  <div id="cyber-gym" class="tab-content m-1">
+    <h2>Training Program with Cyber Gym</h2>
+    <p><img th:src="@{/assets/images/service-sample (1).png}" /></p>
+  </div>
+
+  <div th:replace="~{fragments/footer :: footer}"></div>     
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    function activateTab(tabId) {
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.tab === tabId));
+      contents.forEach(content => content.classList.toggle('active', content.id === tabId));
+    }
+
+    function loadTabFromHash() {
+      const hash = window.location.hash.substring(1);
+      const tabId = hash || 'vapt';
+      activateTab(tabId);
+    }
+
+    window.addEventListener('hashchange', loadTabFromHash);
+    window.addEventListener('DOMContentLoaded', loadTabFromHash);
+
+    // Tab bar scroll buttons
+    const tabBar = document.getElementById('tabBar');
+    document.getElementById('scrollLeft').addEventListener('click', () => {
+      tabBar.scrollBy({ left: -150, behavior: 'smooth' });
+    });
+    document.getElementById('scrollRight').addEventListener('click', () => {
+      tabBar.scrollBy({ left: 150, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

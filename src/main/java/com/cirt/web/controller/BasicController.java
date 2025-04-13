@@ -110,4 +110,9 @@ public class BasicController {
     public String loginPage(Model model, HttpServletRequest request) {
         return "basic/login-form";
     }
+
+    @GetMapping("/service")
+    public String serviceDescription(Model model, HttpServletRequest request) {
+        return "basic/services";
+    }
 }

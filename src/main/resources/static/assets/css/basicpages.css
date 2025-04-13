@@ -10,7 +10,7 @@ body {
 
 /* Header */
 .base_header-container {
-    background: linear-gradient(90deg, #2f855a, #38a169);
+    background: linear-gradient(90deg, #232a84, #3b50a1);
     color: white;
     text-align: center;
     padding: 30px 0;
@@ -39,7 +39,7 @@ main {
 .base_mission-section, .base_vision-section, .base_about-section, .base_what-section {
     margin-bottom: 40px;
     padding: 30px;
-    border-left: 8px solid #38a169;
+    border-left: 8px solid #3848a1;
     background: linear-gradient(90deg, #edfdfd, #f7fff7);
     border-radius: 10px;
     transition: transform 0.3s ease;
@@ -51,11 +51,11 @@ main {
 }
 
 .base_mission-section h2, .base_vision-section h2, .base_about-section h2, .base_what-section h2 {
-    color: #2f855a;
+    color: #2f4785;
     margin-bottom: 20px;
     font-size: 2rem;
     text-transform: uppercase;
-    border-bottom: 2px solid #38a169;
+    border-bottom: 2px solid #384fa1;
     padding-bottom: 10px;
 }
 
@@ -68,11 +68,11 @@ main {
 .base_mission-section ul li, .base_vision-section ul li, .base_about-section ul li, .base_what-section ul li {
     margin-bottom: 15px;
     font-size: 1.1rem;
-    color: #276749;
+    color: #273167;
 }
 
 .base_service h3 {
-    color: #276749;
+    color: #273167;
     margin-top: 20px;
     font-size: 1.5rem;
     text-decoration: underline;
@@ -87,7 +87,7 @@ main {
 
 /* Buttons */
 button {
-    background-color: #38a169;
+    background-color: #384ba1;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -98,7 +98,7 @@ button {
 }
 
 button:hover {
-    background-color: #2f855a;
+    background-color: #2f4085;
 }
 
 /* Responsive Design */
