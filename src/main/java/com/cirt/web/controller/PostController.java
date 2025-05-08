@@ -56,15 +56,16 @@ public class PostController {
             case "advisories":
             case "bulletins":
             case "acts":
-            case "policies":
             case "notices":
             case "news":
             case "events":
+                return "post/post-list-horizontal-single";
             case "articles":
+            case "policies":
             case "magazines":
             case "guidelines":
             case "documents":
-                return "post/post-list";
+                return "post/post-list-default-card";
             default:
                 return "404";
         }

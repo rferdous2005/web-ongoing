@@ -2,15 +2,18 @@ const sliderData = [
     {
       title: "Reinforce the security of SME homepages",
       text: `Provide web vulnerability inspection and web security enhancement tools (Whistle Castle, Cyber Shelter) service for SMEs.
-            Constantly monitor for threats and secure your system proactively.`
+            Constantly monitor for threats and secure your system proactively.`,
+      url: `http://localhost:8080/magazines/monthly-november-2022`
     },
     {
       title: "Real-time Cyber Monitoring",
-      text: "Constantly monitor for threats and secure your system proactively. Provide web vulnerability inspection and web security enhancement tools (Whistle Castle, Cyber Shelter) service for SMEs."
+      text: "Constantly monitor for threats and secure your system proactively. Provide web vulnerability inspection and web security enhancement tools (Whistle Castle, Cyber Shelter) service for SMEs.",
+      url: `http://localhost:8080/magazines/monthly-november-december-2021`
     },
     {
       title: "Nationwide Cyber Defense",
-      text: "Defending infrastructure and citizens from malicious cyber attacks. Provide web vulnerability inspection and web security enhancement tools (Whistle Castle, Cyber Shelter) service for SMEs"
+      text: "Defending infrastructure and citizens from malicious cyber attacks. Provide web vulnerability inspection and web security enhancement tools (Whistle Castle, Cyber Shelter) service for SMEs",
+      url: `http://localhost:8080/magazines/monthly-february-march-2022`
     }
   ];
 

@@ -6,6 +6,7 @@ body {
   .tabs {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     border-bottom: 2px solid #ccc;
     margin-bottom: 1rem;
   }

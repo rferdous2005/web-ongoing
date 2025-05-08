@@ -115,4 +115,9 @@ public class BasicController {
     public String serviceDescription(Model model, HttpServletRequest request) {
         return "basic/services";
     }
+
+    @GetMapping("/report-incident")
+    public String reportIncidentForm(Model model, HttpServletRequest request) {
+        return "fragments/report-incident";
+    }
 }

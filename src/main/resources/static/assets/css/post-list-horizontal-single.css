@@ -1,0 +1,142 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f5f7;
+    margin: 0;
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid rgb(40, 30, 230); /* Matches the blue theme */
+    border-radius: 12px 12px 0 0;
+  }
+  .post-item {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .post-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #ccc;
+  }
+
+  .thumbnail {
+    flex-shrink: 0;
+    width: 300px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .post-details {
+    flex: 1;
+  }
+
+  .post-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.3rem;
+    transition: color 0.3s;
+  }
+
+  .post-item:hover .post-title {
+    color: #3636b2;
+  }
+
+  .post-subtitle {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-time {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 15px;
+  }
+
+  /* Pagination Buttons */
+.pagination a {
+    font-size: 1rem;
+    margin: 0 5px;
+    padding: 8px 16px;
+    color: white;
+    background-color: rgb(3, 25, 153);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination a:hover {
+    background-color: rgb(3, 25, 153); /* Darker green for hover effect */
+    transform: scale(1.1);
+}
+
+/* Page Header Styling */
+header {
+  background: linear-gradient(90deg, #232a84, #3b50a1);
+  color: white;
+  padding: 40px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* General Page Container */
+.content-container {
+  padding: 20px;
+  margin: auto;
+  max-width: 1200px;
+  background-color: rgb(217, 218, 247); /* Added green background */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  animation: fadeIn 0.8s ease-in-out;
+  color: white; /* Ensures text is readable against the green background */
+  font-family: 'Roboto', sans-serif;
+}
+  @media (max-width: 600px) {
+    .post-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 160px;
+    }
+
+    .post-details {
+      width: 100%;
+    }
+  }

@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
+  <link rel="stylesheet" th:href="@{/assets/css/common.css}">
   <link rel="stylesheet" th:href="@{/assets/css/postlist-style-1.css}">
 </head>
 <body>
@@ -37,7 +38,7 @@
                             <h4 th:text="${post.getTitle()}">Post Title</h4>
                         </a>
                         <p class="card-text" th:text="${#strings.substring(post.getSubTitle(), 0, 150)} + '....'"></p>
-                        <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn btn-success">Read More</a>
+                        <a th:href="'/'+${post.getCategory()}+'/'+${post.getUri()}" class="btn-cirt">Read More</a>
                     </div>
                 </div>
             </div>

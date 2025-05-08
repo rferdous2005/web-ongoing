@@ -80,24 +80,6 @@ header p {
     margin-bottom: 15px;
 }
 
-/* Button Styling */
-.btn-success {
-    background-color: rgb(3, 3, 197);
-    border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-success:hover {
-    background-color: #030862; /* Darker green for hover */
-    transform: scale(1.05);
-}
-
 /* Pagination Buttons */
 .pagination a {
     font-size: 1rem;

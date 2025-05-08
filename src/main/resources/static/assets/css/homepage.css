@@ -19,7 +19,7 @@ body {
     justify-content: center;
     background: url('/assets/images/hero-3.png') center/cover no-repeat;
     overflow: hidden;
-    animation: hesec-backgroundMove 10s infinite alternate ease-in-out;
+    animation: hesec-backgroundMove 3s infinite alternate ease-in-out;
 }
 
 .hesec-hero::before {
@@ -305,6 +305,7 @@ body {
 
   .slider {
     display: flex;
+    justify-content: center;
     transition: transform 0.5s ease-in-out;
   }
   .service-item {
@@ -383,7 +384,7 @@ body {
           transform: scale(1);
       }
       50% {
-          opacity: 0.6;
+          opacity: 0.75;
           transform: scale(1.2);
       }
   }
