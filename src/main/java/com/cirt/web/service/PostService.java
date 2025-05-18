@@ -9,13 +9,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.cirt.web.dto.PostSummaryDto;
+import com.cirt.web.entity.Homepage;
 import com.cirt.web.entity.Post;
+import com.cirt.web.repository.HomepageRepository;
 import com.cirt.web.repository.PostRepository;
 
 @Service
 public class PostService {
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private HomepageRepository homepageRepository;
 
     public Page<Post> getPaginatedPostsForPublic(String category, Pageable pageable) {
         return this.postRepository.findByVisibilityAndCategory("public", category, pageable);
@@ -35,5 +39,22 @@ public class PostService {
 
     public Optional<Post> findSinglePostForPublic(String category, String uri) {
         return this.postRepository.findByVisibilityAndCategoryAndUri("public", category, uri);
+    }
+
+    public Homepage getOnlyOneHomepageContent() {
+        Homepage homepage = this.homepageRepository.findById(1).get();
+        if(homepage == null) System.out.println("Null!!! No data found on Homepage Table");
+        return homepage;
+    }
+
+    public Homepage updateOnlyOneHomepageContent(Homepage newContent) {
+        Homepage homepage = this.homepageRepository.findById(1).get();
+        if(homepage == null) System.out.println("Null!!! No data found on Homepage Table");
+        homepage.setWarningColor(newContent.getWarningColor());
+        homepage.setWarningLabel(newContent.getWarningLabel());
+        homepage.setHighlights(newContent.getHighlights());
+
+        Homepage newHomepage = this.homepageRepository.save(homepage);
+        return newHomepage;
     }
 }

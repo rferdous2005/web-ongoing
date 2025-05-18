@@ -117,23 +117,12 @@ body {
     }
 }
 
-
-/* Section Headings */
-h2 {
-    font-size: 2.5rem;
-    color: #007BFF;
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-    font-weight: 600;
-}
-
 h2::after {
     content: '';
     display: block;
     width: 80px;
     height: 4px;
-    background: #007BFF;
+    background: #3636b2;
     margin: 15px auto 0;
     border-radius: 2px;
 }
@@ -209,6 +198,9 @@ button:focus {
     box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
 }
 
+.leaders-face {
+  border-radius: 200px;
+}
 .show-more:active {
     transform: translateY(0) scale(0.98);
     box-shadow: 0 3px 10px rgba(0, 86, 179, 0.2);
@@ -223,6 +215,7 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: #f3f4f8;
     color: #333;
+    font-size: larger;
   }
   .header {
     background-color: #3636b2;
@@ -268,7 +261,7 @@ body {
     animation: pulse 2s infinite;
   }
   .slider-box h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     color: #3636b2;
     margin-bottom: 1rem;
     text-align: left;
@@ -277,7 +270,7 @@ body {
     display: none;
   }
   .slider-box p {
-    font-size: 1rem;
+    font-size: 1.25rem;
     line-height: 1.4;
   }
   @keyframes pulse {
@@ -289,7 +282,7 @@ body {
     padding: 3rem 1rem;
     background-color: #fff;
   }
-  .services-section h2 {
+ h2 {
     text-align: center;
     color: #3636b2;
     font-size: 2rem;

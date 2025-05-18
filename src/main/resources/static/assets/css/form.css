@@ -1,0 +1,72 @@
+.form-wrapper {
+      max-width: 800px;
+      margin: 1rem auto;
+      padding: 2.5rem;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s ease;
+    }
+    .form-wrapper:hover {
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
+    }
+    .form-section {
+      margin-bottom: 2rem;
+    }
+    .form-section h5 {
+      border-left: 4px solid #0d6efd;
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: #0d6efd;
+    }
+    .form-control {
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-control:hover {
+      border-color: #86b7fe;
+    }
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+    .form-check-input:checked {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    .form-check-label {
+      margin-left: 0.3rem;
+      transition: color 0.3s;
+    }
+    .form-check:hover .form-check-label {
+      color: #0d6efd;
+    }
+    .btn {
+      border-radius: 6px;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .btn-submit {
+      background-color: #0d6efd;
+      color: #fff;
+    }
+    .btn-submit:hover {
+      background-color: #084298;
+    }
+    .form-step {
+      display: none;
+    }
+    .form-step.active {
+      display: block;
+    }
+    .step-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+    .hidden {
+      display: none;
+    }

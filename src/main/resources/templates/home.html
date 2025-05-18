@@ -32,12 +32,12 @@
           <div id="currentDateTime"></div>
         </div>
         <div class="col-md-4 p-2">
-          <span style="margin-left: 1rem; border-left: 55px solid yellowgreen; animation: warningpulse 1.5s infinite; color: #000;">.</span>
-          <span class="highlight">Attention</span>
+          <span th:style="${warningColorStyle}">.</span>
+          <span class="highlight" th:text="${warningLabel}">Attention</span>
         </div>
       </div>
       <h1>From <span class="highlight">Cyber Threats</span> of the country and the people</h1>
-      <p>We will keep you safe.</p>
+      <h1>We will keep you safe.</h1>
     </div>
     <div class="slider-box" id="text-slider">
       <section class="hesec-hero" style="height: 150px; min-width: 100%;">
@@ -138,6 +138,31 @@
       </div>
       <a class="show-more" href="/magazines">Show More</a>
   </div>
+  <div class="container">
+      <h2>Our Pioneers</h2>
+      <div class="d-flex justify-content-center justify-content-between" >
+        <div>
+          <h6 class="text-center" style="background-color: #3636b2; color: white; padding: 5px;">Honorable Chief Advisor</h6>
+          <p class="text-center"><img src="/media?id=.jpg/Pioneer-1.jpg" class="leaders-face" height="150" width="150"/></p>
+          <h6 class="text-center">Dr. Muhammad Yunus</h6>
+        </div>
+        <div>
+            <h6 class="text-center" style="background-color: #3636b2; color: white; padding: 5px;">Special Assistant to Chief Advisor</h6>
+            <p class="text-center"><img src="/media?id=.jpg/Pioneer-2.jpg" class="leaders-face" height="150" width="150"/></p>
+            <h6 class="text-center">Faiz Ahmad Taiyeb</h6>
+        </div>
+        <div>
+            <h6 class="text-center" style="background-color: #3636b2; color: white; padding: 5px;">Secretary</h6>
+            <p class="text-center"><img src="/media?id=.jpg/Pioneer-3.jpg" class="leaders-face" height="150" width="150"/></p>
+            <h6 class="text-center">Shish Haider Chowdhury, NDC</h6>
+        </div>
+        <div>
+            <h6 class="text-center" style="background-color: #3636b2; color: white; padding: 5px;">Executive Director, BCC</h6>
+            <p class="text-center"><img src="/media?id=.jpg/Pioneer-4.jpg" class="leaders-face" height="150" width="150"/></p>
+            <h6 class="text-center">Dr. Muhammed Mehedi Hassan</h6>
+        </div>
+      </div>
+  </div>
   <br/><br/>
   <div class="container">
       <h2>News & Events</h2>
@@ -162,7 +187,7 @@
 <br/><br/>
 <div class="container mb-3">
   <h2> Collaborations With </h2>
-  <div class="row">
+  <div class="d-flex justify-content-center">
       <div class="col-md-2 text-center">
           <img src="/assets/images/collaboration-logo (1).png" alt="Logo 1" height="100" width="150">
       </div>

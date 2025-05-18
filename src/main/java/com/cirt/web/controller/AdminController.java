@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cirt.web.dto.MediaDto;
 import com.cirt.web.dto.PostSummaryDto;
+import com.cirt.web.entity.Homepage;
 import com.cirt.web.entity.Media;
 import com.cirt.web.entity.Post;
 import com.cirt.web.service.MediaService;
@@ -34,8 +35,22 @@ public class AdminController {
     private PostService postService;
 
     @GetMapping("/home")
-    public String getHomepage() {
+    public String getHomepage(Model model) {
+        Homepage homepageContent = this.postService.getOnlyOneHomepageContent();
+        model.addAttribute("content", homepageContent);
         return "admin/admin-home";
+    }
+
+    @PostMapping("/home")
+    public String getHomepage(@ModelAttribute("content") Homepage homepageContent, Model model, RedirectAttributes redirectAttributes) {
+        String colorCode = homepageContent.getWarningLabel().split("\\|")[1];
+        homepageContent.setWarningColor(colorCode);
+        Homepage homepage = this.postService.updateOnlyOneHomepageContent(homepageContent);
+        if(homepage != null) {
+            redirectAttributes.addAttribute("type", "success");
+            redirectAttributes.addAttribute("message", "Homepage content update successfull!!");
+        }
+        return "redirect:/admin/home";
     }
     
     @GetMapping("/media")

@@ -10,3 +10,8 @@ CREATE TABLE authorities (
 
 INSERT INTO authorities (username, authority) VALUES 
 ('admin', 'ROLE_ADMIN');
+
+INSERT INTO homepage(id, warning_color, warning_label, highlights) VALUES (1, '#029d30','Attention|#029d30','[]');
+
+<!-- Insert Pioneer-n.jpg in folder media-uploads -->
+<!-- Production build with uncomment app.profile = prod  in application.properties -->
