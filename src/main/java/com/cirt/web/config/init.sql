@@ -7,6 +7,7 @@ CREATE TABLE authorities (
     authority VARCHAR(50) NOT NULL,
     FOREIGN KEY (id) REFERENCES users(id)
 );
+ALTER TABLE users MODIFY COLUMN role VARCHAR(20) NOT NULL;
 
 INSERT INTO authorities (username, authority) VALUES 
 ('admin', 'ROLE_ADMIN');

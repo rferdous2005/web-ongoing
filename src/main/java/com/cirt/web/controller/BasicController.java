@@ -6,7 +6,9 @@ import java.io.OutputStream;
 import java.net.http.HttpHeaders;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +25,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cirt.web.dto.HighlightsDto;
 import com.cirt.web.entity.Homepage;
 import com.cirt.web.entity.Media;
 import com.cirt.web.entity.Post;
 import com.cirt.web.repository.MediaRepository;
 import com.cirt.web.service.PostService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -43,6 +50,8 @@ public class BasicController {
     @Autowired
     PostService postService;
 
+    @Autowired
+    ObjectMapper objectMapper;
     private final int PAGE_SIZE = 5;
 
     @GetMapping
@@ -55,11 +64,26 @@ public class BasicController {
         //     model.addAttribute("postList", new LinkedList<>());
         // } else {
         //     model.addAttribute("postList", postListPaged.getContent());
-        // }margin-left: 1.5rem; border-left: 55px solid yellowgreen; animation: warningpulse 1.5s infinite; color: #000;
+        // }
         Homepage homepageContent = this.postService.getOnlyOneHomepageContent();
+        List<HighlightsDto> highlightsDtos = new ArrayList<>();
+        try {
+            JsonNode arrayNode = objectMapper.readTree(homepageContent.getHighlights());
+            for(JsonNode jsonNode: arrayNode) {
+                HighlightsDto highlightsDto = new HighlightsDto();
+                highlightsDto.setTitle(jsonNode.get("title").asText());
+                highlightsDto.setBody(jsonNode.get("body").asText());
+                highlightsDto.setUrl(jsonNode.get("url").asText());
+                highlightsDtos.add(highlightsDto);
+            }
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         model.addAttribute("warningLabel", homepageContent.getWarningLabel().split("\\|")[0]);
         model.addAttribute("warningColorStyle", "margin-left: 1.5rem; animation: warningpulse 1.5s infinite;color: #000;border-left: 55px solid "+homepageContent.getWarningColor());
-        model.addAttribute("highlights", "");
+        model.addAttribute("highlights", highlightsDtos);
         model.addAttribute("alertsList", alertsList);
         model.addAttribute("magazinesList", magazinesList);
         model.addAttribute("newsList", newsList);

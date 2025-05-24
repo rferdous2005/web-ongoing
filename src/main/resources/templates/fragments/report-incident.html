@@ -38,7 +38,7 @@
         <div id="individualFields">
           <div class="mb-3">
             <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" placeholder="John Doe">
+            <input type="text" class="form-control" id="name" placeholder="Your name">
           </div>
         </div>
 
@@ -59,8 +59,35 @@
         </div>
         <div class="mb-3">
           <label for="phone" class="form-label">Phone Number</label>
-          <input type="text" class="form-control" id="phone" placeholder="Optional">
+          <input type="text" class="form-control" id="phone" placeholder="Mandatory" required>
         </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Region</label>
+          <select class="form-select" id="type" required>
+            <option value="">Choose...</option>
+            <option value="Dhaka">Dhaka</option>
+            <option value="Barisal">Barisal</option>
+            <option value="Chattogram">Chattogram</option>
+            <option value="Dinajpur">Dinajpur</option>
+            <option value="Khulna">Khulna</option>
+            <option value="Mymensingh">Mymensingh</option>
+            <option value="Rajshahi">Rajshahi</option>
+            <option value="Sylhet">Sylhet</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+          <label for="location" class="form-label">Physical Location</label>
+          <textarea class="form-control" id="location" rows="4" placeholder="The Address where Incident Taken place"></textarea>
+      </div>
+      <div class="mb-3">
+          <label for="ip" class="form-label">Affected Domain and IP</label>
+          <input type="text" class="form-control" id="ip" placeholder="(If any) Format: 114.115.115.115 - www.example.com">
+      </div>
+      <div class="mb-3">
+          <label for="fileUpload">Logs / Evidence Upload 	(.txt, .pcap, .jpg, .pdf, .log etc. any file format)</label>
+          <input type="file" class="form-control" id="fileUpload">
       </div>
       <div class="step-buttons">
         <div></div>
@@ -73,13 +100,19 @@
         <h5>Incident Details</h5>
         <div class="mb-3">
           <label for="type" class="form-label">Type of Incident</label>
-          <select class="form-select" id="type">
+          <select class="form-select" id="type" required>
             <option value="">Choose...</option>
-            <option>Phishing Email</option>
-            <option>Malware Infection</option>
-            <option>Unauthorized Access</option>
-            <option>Website Compromise</option>
-            <option>Other</option>
+            <option value="Phishing Email">Phishing Email</option>
+            <option value="Malware Infection">Malware Infection</option>
+            <option value="Unauthorized Access">Unauthorized Access</option>
+            <option value="Website Compromise">Website Compromise</option>
+            <option value="Denial of Service (DoS/DDoS)">Denial of Service (DoS/DDoS)</option>
+            <option value="Insider Threat">Insider Threat</option>
+            <option value="Data Breach / Leak">Data Breach / Leak</option>
+            <option value="Ransomware">Ransomware</option>
+            <option value="Website Defacement">Website defacement</option>            
+            <option value="Other">Other</option>
+            <option value="I don't know">I don't know</option>
           </select>
         </div>
         <div class="mb-3">
@@ -90,7 +123,73 @@
           <label for="date" class="form-label">Date of Incident</label>
           <input type="date" class="form-control" id="date">
         </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Affected System or Asset</label>
+          <select class="form-select" id="type" required>
+            <option value="">Choose...</option>
+            <option value="Domain">Domain</option>
+            <option value="Server">Server</option>
+            <option value="Personal Desktop">Personal Desktop</option>
+            <option value="Personal Laptop">Personal Laptop</option>
+            <option value="Smartphone / Mobile Device">Smartphone / Mobile Device</option>
+            <option value="Public Website">Public Website</option>
+            <option value="Database">Database</option>       
+            <option value="Other">Other</option>
+            <option value="I am not sure">I am not sure</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">How was the Incident Discovered?</label>
+          <select class="form-select" id="type" required>
+            <option value="">Choose...</option>
+            <option value="Monitoring">Monitoring</option>
+            <option value="Alert Service">Alert Service</option>
+            <option value="User Report">User Report</option>
+            <option value="Log Report">Log Report</option>    
+            <option value="Other">Other</option>
+            <option value="I don't know">I don't know</option>
+          </select>
+        </div>
       </div>
+        <div class="mb-3">
+          <label for="attackVector" class="form-label">Attack Vector</label>
+          <select class="form-select" id="attackVector" required>
+            <option value="" >Choose...</option>
+            <option value="Domain">Email Attachment</option>
+            <option value="Server">Email Hyperlink</option>
+            <option value="Web">Web</option>
+            <option value="USB">USB</option>
+            <option value="Insider">Insider</option>
+            <option value="Social Engineering">Social Engineering</option>
+            <option value="I am not sure">I am not sure</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      <div class="mb-3">
+          <label class="form-label">Is the Incident Ongoing?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ongoing" id="ongoingYes" value="Yes" checked>
+            <label class="form-check-label" for="ongoingYes">Yes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="reportType" id="ongoingNo" value="No">
+            <label class="form-check-label" for="ongoingNo">No</label>
+          </div>
+        </div>
+      <div class="mb-3">
+          <label for="date" class="form-label">Impact Assessment</label>
+          <select class="form-select" id="impact" required>
+            <option value="" disabled>Choose...</option>
+            <option value="Domain">Critical</option>
+            <option value="Server">Major</option>
+            <option value="Personal Desktop">Minor</option>
+            <option value="Personal Laptop">None</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Steps Already Taken</label>
+          <textarea class="form-control" id="description" rows="4" placeholder="Please describe what are the containments or mitigations done till now"></textarea>
+        </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="Captcha">
         <label class="form-check-label" for="subscribe">Captcha Input</label>

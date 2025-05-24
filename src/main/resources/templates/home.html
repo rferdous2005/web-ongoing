@@ -40,11 +40,7 @@
       <h1>We will keep you safe.</h1>
     </div>
     <div class="slider-box" id="text-slider">
-      <section class="hesec-hero" style="height: 150px; min-width: 100%;">
-        <div class="hesec-hero-content">
-            <p>Provide web vulnerability inspection and web security enhancement tools (Whistle Castle, Cyber Shelter) service for SMEs. Constantly monitor for threats and secure your system proactively.</p>
-        </div>
-      </section>
+      <img th:src="@{/assets/images/hero-3.png}" height="250" width="750" class="hero"/>
       <h2></h2>
       <p></p>
       <a class="btn btn-dark" style="background-color:#3636b2; border-radius: 100px;"></a>
@@ -91,13 +87,6 @@
       </div>
     </div>
   </section>
-<!-- <section class="hesec-hero">
-  <div class="hesec-hero-content">
-      <h1>BGD e-GOV CIRT</h1>
-      <p>N-CERT of Bangladesh</p>
-      <a href="/who-we-are"><button>Learn More</button></a>
-  </div>
-</section> -->
 <section class="container mt-5">
   <div class="container">
       <h2>Latest Alerts</h2>
@@ -210,7 +199,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script>
+<script th:inline="javascript">
     updateClock();
     setInterval(updateClock, 30000);
     //let myVar = [[${someThymeleafVar}]];
@@ -231,7 +220,7 @@
       }
     });
 
-
+    let sliderData =  /*[[${highlights}]]*/ [];
     sliderData.forEach((_, index) => {
       $("#slider-dots").append(`<div class="dot" data-index="${index}"></div>`);
     });
@@ -246,7 +235,7 @@
       });
 
       $("#text-slider p").fadeOut(300, function () {
-        $(this).text(data.text).fadeIn(300);
+        $(this).text(data.body).fadeIn(300);
       });
 
       $("#text-slider a").fadeOut(300, function () {
@@ -260,8 +249,8 @@
       $(".dot").removeClass("active");
       $(".dot").eq(currentSlide).addClass("active");
       currentSlide++;
-      $(".hesec-hero").slideUp();
-    }, 5000);
+      $(".hero").slideUp();
+    }, 3300);
 
     $(".dot").on("click", function () {
       currentSlide = $(this).data("index");
@@ -271,7 +260,7 @@
         $(this).text(data.title).fadeIn(300);
       });
       $("#text-slider p").fadeOut(300, function () {
-        $(this).text(data.text).fadeIn(300);
+        $(this).text(data.body).fadeIn(300);
       });
       $("#text-slider a").fadeOut(300, function () {
         $(this).prop("href", data.url).fadeIn(300);
