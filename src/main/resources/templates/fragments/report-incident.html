@@ -54,7 +54,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="email" class="form-label">Contact Person Email Address</label>
+          <label for="email" class="form-label">Email Address</label>
           <input type="email" class="form-control" id="email" placeholder="you@example.com">
         </div>
         <div class="mb-3">
@@ -172,8 +172,12 @@
             <label class="form-check-label" for="ongoingYes">Yes</label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="reportType" id="ongoingNo" value="No">
+            <input class="form-check-input" type="radio" name="ongoing" id="ongoingNo" value="No">
             <label class="form-check-label" for="ongoingNo">No</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="ongoing" id="ongoingNotSure" value="No">
+            <label class="form-check-label" for="ongoingNotSure">Not Sure</label>
           </div>
         </div>
       <div class="mb-3">
@@ -187,8 +191,8 @@
           </select>
         </div>
         <div class="mb-3">
-          <label for="description" class="form-label">Steps Already Taken</label>
-          <textarea class="form-control" id="description" rows="4" placeholder="Please describe what are the containments or mitigations done till now"></textarea>
+          <label for="stepsTaken" class="form-label">Steps Already Taken</label>
+          <textarea class="form-control" id="stepsTaken" rows="4" placeholder="Please describe what are the containments or mitigations done till now"></textarea>
         </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="Captcha">
