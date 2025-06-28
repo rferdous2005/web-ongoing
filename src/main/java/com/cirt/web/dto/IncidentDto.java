@@ -1,35 +1,25 @@
-package com.cirt.web.entity;
+package com.cirt.web.dto;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-public class Incident {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class IncidentDto {
 
     private String reportType;
     @Column(nullable = true, length = 100)
-    private String name, orgName, contactName, domainIP, fileName;
+    private String name, orgName, contactName, domainIP;
     @Column(nullable = false, length = 50)
     private String email, phone, region, incidentType, affectedAsset, discovery, attackVector, impact, ongoing;
     @Column(nullable = false, length = 500)
     private String location, description, stepsTaken;
+    MultipartFile files;
 
     private LocalDateTime incidentTime;
-
-    @CreationTimestamp
-    private LocalDateTime createdAt;
 }

@@ -28,12 +28,17 @@
 
             <!-- Right Side: Related Posts -->
             <section class="related-posts col-md-3">
-                <h2>Related Posts</h2>
+                <h2>Suggested Posts</h2>
                 <ul>
-                    <li><a href="#" th:href="@{/post/1}">Related Post 1</a></li>
-                    <li><a href="#" th:href="@{/post/2}">Related Post 2</a></li>
+                    <li th:each="suggestedPost: ${suggestedPostList}">
+                        <a href="#" th:href="'/'+${suggestedPost.category}+'/'+${suggestedPost.uri}" th:text="${suggestedPost.title}"></a>
+                        <p th:text="${#temporals.format(post.getPublishedAt(), 'dd-MMM-yyyy HH:mm:ss')}"></p>
+                        <hr/>
+                    </li>
+                    
+                    <!-- <li><a href="#" th:href="@{/post/2}">Related Post 2</a></li>
                     <li><a href="#" th:href="@{/post/3}">Related Post 3</a></li>
-                    <li><a href="#" th:href="@{/post/4}">Related Post 4</a></li>
+                    <li><a href="#" th:href="@{/post/4}">Related Post 4</a></li> -->
                 </ul>
             </section>
         </div>

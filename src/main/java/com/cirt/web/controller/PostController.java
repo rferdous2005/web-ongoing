@@ -75,6 +75,12 @@ public class PostController {
     @GetMapping("/{category}/{post-uri}")
     public String showSinglePost(@PathVariable("category") String category, @PathVariable("post-uri") String uri, Model model) {
         Post returnedPost = postService.findSinglePostForPublic(category, uri).orElse(null);
+        Page<Post> postListPaged = postService.getPaginatedPostsForPublic(category, PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "publishedAt")));
+        if(postListPaged.getTotalElements() == 0) {
+            model.addAttribute("postList", new LinkedList<>());
+        } else {
+            model.addAttribute("suggestedPostList", postListPaged.getContent());
+        }
         if(returnedPost == null) {
             return "404";
         }

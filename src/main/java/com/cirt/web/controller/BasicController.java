@@ -21,15 +21,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cirt.web.dto.HighlightsDto;
+import com.cirt.web.dto.IncidentDto;
 import com.cirt.web.entity.Homepage;
+import com.cirt.web.entity.Incident;
 import com.cirt.web.entity.Media;
 import com.cirt.web.entity.Post;
 import com.cirt.web.repository.MediaRepository;
+import com.cirt.web.service.IncidentService;
 import com.cirt.web.service.PostService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -49,6 +54,9 @@ public class BasicController {
     MediaRepository mediaRepository;
     @Autowired
     PostService postService;
+
+    @Autowired
+    IncidentService incidentService;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -147,6 +155,14 @@ public class BasicController {
 
     @GetMapping("/report-incident")
     public String reportIncidentForm(Model model, HttpServletRequest request) {
+        IncidentDto incidentDto = new IncidentDto();
+        model.addAttribute("incidentDto", incidentDto);
         return "fragments/report-incident";
+    }
+
+    @PostMapping("/report-incident")
+    public String reportIncidentSave(Model model, @ModelAttribute("incidentDto") IncidentDto incidentDto, HttpServletRequest request) {
+        this.incidentService.saveIncident(incidentDto);
+        return "fragments/incident-success";
     }
 }
