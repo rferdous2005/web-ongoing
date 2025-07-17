@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
     <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
     <link rel="stylesheet" th:href="@{/assets/css/admin-header.css}">
-
+    <link th:href="@{/assets/images/favicon.ico}" rel="icon">
 </head>
 <body>
     <div th:replace="~{fragments/header :: menu}"></div>
@@ -20,7 +20,7 @@
 
     <div class= "container form-container">
         <h2 class="custom-h2">Edit Post</h2>
-        <form id="postForm" method="post" th:action="@{/admin/post}" th:object="${post}">
+        <form id="postForm" method="post" th:action="'/admin/posts/'+${post.id}" th:object="${post}">
             <!-- Title -->
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -83,7 +83,7 @@
             <!-- Publication Time -->
             <div class="mb-3">
                 <label for="publicationTime" class="form-label">Publish Time</label>
-                <input type="datetime-local" class="form-control" th:field="*{publishedAt}">
+                <input type="datetime-local" class="form-control" name="publishedAt" th:value="${publishedAtStringified}">
             </div>
 
             <button type="submit" id="submitBtn" class="btn btn-primary">Submit</button>

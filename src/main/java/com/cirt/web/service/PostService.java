@@ -57,4 +57,17 @@ public class PostService {
         Homepage newHomepage = this.homepageRepository.save(homepage);
         return newHomepage;
     }
+
+    public void update(int id, Post newP) {
+        Post returnedPost = this.findByIdForAdmin(id).orElse(null);
+        returnedPost.setBody(newP.getBody());
+        returnedPost.setCategory(newP.getCategory());
+        returnedPost.setPublishedAt(newP.getPublishedAt());
+        returnedPost.setSubTitle(newP.getSubTitle());
+        returnedPost.setThumbnail(newP.getThumbnail());
+        returnedPost.setTitle(newP.getTitle());
+        returnedPost.setUri(newP.getUri());
+        returnedPost.setVisibility(newP.getVisibility());
+        this.postRepository.save(returnedPost);
+    }
 }

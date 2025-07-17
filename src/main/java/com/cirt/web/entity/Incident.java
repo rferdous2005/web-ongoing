@@ -24,7 +24,7 @@ public class Incident {
     @Column(nullable = true, length = 100)
     private String name, orgName, contactName, domainIP, fileName;
     @Column(nullable = false, length = 50)
-    private String email, phone, region, incidentType, affectedAsset, discovery, attackVector, impact, ongoing;
+    private String email, phone, region, incidentType, affectedAsset, discovery, attackVector, impact, ongoing, responseStatus, generatedId;
     @Column(nullable = false, length = 500)
     private String location, description, stepsTaken;
 

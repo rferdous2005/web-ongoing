@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- <!DOCTYPE html> -->
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,33 +38,22 @@
     <table class="custom-table">
       <thead>
         <tr>
-          <th>File Name</th>
-          <th>Created At</th>
-          <th>Preview</th>
+          <th>User Name</th>
+          <th>User ID</th>
+          <th>Joined At</th>
+          <th>Role</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="media : ${mediaList}">
-          <td>
-              <span th:text="'/media?id=' + ${media.getFileName()}" th:id="'copy-'+${media.id}"></span>
-              <img 
-                  src="/assets/images/copy-icon.png" 
-                  alt="Copy Icon" 
-                  class="copy-icon ms-2" 
-                  th:onclick="'copyFileName(this, ' + '\'' + copy- + ${media.id} + '\'' + ')'"
-                  style="cursor: pointer; width: 20px; height: 20px;"
-              >
-          </td>
-          <td th:text="${#temporals.format(media.getCreatedAt(), 'dd-MM-yyyy - HH:mm:ss')}"></td>
-          <td class="preview-column" th:if="${media.getFileExtension() == '.png' || media.getFileExtension() == '.jpg' || media.getFileExtension() == '.jpeg'}">
-              <img th:src="@{'/media?id=' + ${media.getFileName()}}" alt="Image" class="pdf-icon">
-          </td>
-          <td class="preview-column" th:unless="${media.getFileExtension() == '.png' || media.getFileExtension() == '.jpg' || media.getFileExtension() == '.jpeg'}">
-              <img src="/assets/images/pdf-icon.png" alt="PDF" class="pdf-icon">
-          </td>
+        <tr th:each="user : ${userList}">
+          
+          <td th:text="${user.getName()}"></td>
+          <td th:text="${user.getUsername()}"></td>
+          <td th:text="${#temporals.format(user.getCreatedAt(), 'dd-MM-yyyy - HH:mm:ss')}"></td>
+          <td class="preview-column" th:text="${user.getRole()}"></td>
           <td class="action-column">
-              <a class="delete-btn" th:href="'/admin/media-delete?fileId='+${media.getId()} + '&page=' + ${page}">
+              <a class="delete-btn" th:href="'/admin/user-delete?id='+${user.getId()} + '&page=' + ${page}">
                   <img src="/assets/images/delete.png" alt="Delete" class="delete-icon">
               </a>
           </td>
@@ -77,14 +67,14 @@
 <nav>
   <ul class="pagination">
       <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
-          <a class="page-link" th:href="@{/admin/media(page=${currentPage - 1})}" aria-label="Previous">Previous</a>
+          <a class="page-link" th:href="@{/admin/user(page=${currentPage - 1})}" aria-label="Previous">Previous</a>
       </li>
       <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPage - 1)}" 
           th:classappend="${i == currentPage} ? 'active'">
-          <a class="page-link" th:href="@{/admin/media(page=${i})}" th:text="${i + 1}"></a>
+          <a class="page-link" th:href="@{/admin/user(page=${i})}" th:text="${i + 1}"></a>
       </li>
       <li class="page-item" th:classappend="${currentPage + 1 == totalPage} ? 'disabled'">
-          <a class="page-link" th:href="@{/admin/media(page=${currentPage + 1})}" aria-label="Next">Next</a>
+          <a class="page-link" th:href="@{/admin/user(page=${currentPage + 1})}" aria-label="Next">Next</a>
       </li>
   </ul>
 </nav>
@@ -104,31 +94,35 @@
               <div class="row mb-2">
                   <label class="col-md-2 col-form-label">Name</label>
                   <div class="col-md-8">
-                      <input type="text" class="form-control"  placeholder="">
+                      <input type="text" class="form-control"  placeholder="" th:field="*{name}">
                   </div>
               </div>
               <div class="row mb-2">
                   <label  class="col-md-2 col-form-label">Email</label>
                   <div class="col-md-8">
-                      <input type="email" class="form-control"  placeholder="">
+                      <input type="email" class="form-control"  th:field="*{username}" placeholder="">
                   </div>
               </div>
               <div class="row mb-2">
                   <label  class="col-md-2 col-form-label">Mobile</label>
                   <div class="col-md-8">
-                      <input type="text" class="form-control" placeholder="">
+                      <input type="text" class="form-control" placeholder="" th:field="*{mobile}">
                   </div>
               </div>
               <div class="row mb-2">
                   <label  class="col-md-2 col-form-label">Password</label>
                   <div class="col-md-8">
-                      <input type="password" class="form-control"  placeholder="">
+                      <input type="password" class="form-control"  placeholder=""  th:field="*{password}">
                   </div>
               </div>
               <div class="row mb-2">
-                  <label  class="col-md-2 col-form-label">Designation</label>
+                  <label  class="col-md-2 col-form-label">Role</label>
                   <div class="col-md-8">
-                      <input type="text" class="form-control" placeholder="">
+                      <select  th:field="*{role}">
+                        <option value="ROLE_ADMIN">Admin</option>
+                        <option value="ROLE_MODERATOR">Moderator</option>
+                        <option value="ROLE_VIEWER">Viewer</option>
+                      </select>
                   </div>
               </div>
           

@@ -23,16 +23,17 @@
             <!-- Left Side: Description -->
             <section class="description col-md-9">
                 <h1 th:text="${post.getTitle()}"> </h1>
+                <p style="text-align: center;" th:text="'Published on '+${#temporals.format(post.getPublishedAt(), 'dd-MMM-yyyy HH:mm:ss')}"></p>
                 <div class="holder" th:utext="${post.body}"> </div>
             </section>
 
             <!-- Right Side: Related Posts -->
             <section class="related-posts col-md-3">
-                <h2>Suggested Posts</h2>
+                <h2>Similar Posts</h2>
                 <ul>
                     <li th:each="suggestedPost: ${suggestedPostList}">
                         <a href="#" th:href="'/'+${suggestedPost.category}+'/'+${suggestedPost.uri}" th:text="${suggestedPost.title}"></a>
-                        <p th:text="${#temporals.format(post.getPublishedAt(), 'dd-MMM-yyyy HH:mm:ss')}"></p>
+                        <p th:text="${#temporals.format(suggestedPost.getPublishedAt(), 'dd-MMM-yyyy HH:mm:ss')}"></p>
                         <hr/>
                     </li>
                     
