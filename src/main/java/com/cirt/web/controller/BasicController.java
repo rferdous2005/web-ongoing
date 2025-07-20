@@ -165,4 +165,9 @@ public class BasicController {
         this.incidentService.saveIncident(incidentDto);
         return "fragments/incident-success";
     }
+
+    @GetMapping("/tlp")
+    public String showTlpPage(Model model, HttpServletRequest request) {
+        return "basic/tlp";
+    }
 }

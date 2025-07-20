@@ -32,6 +32,7 @@ public class UserService {
     public void addUserByAdmin(User user) {
         Authority authority = new Authority();
         authority.setAuthority(user.getRole());
+        authority.setUsername(user.getUsername());
         authority.setUser(user);
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
