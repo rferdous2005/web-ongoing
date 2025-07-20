@@ -45,6 +45,7 @@ public class PostController {
         model.addAttribute("page", page);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPage", postListPaged.getTotalPages());
+        System.out.println(postListPaged.getTotalPages());
         switch (category) {
             case "logout":
                 Authentication auth = SecurityContextHolder.getContext().getAuthentication();

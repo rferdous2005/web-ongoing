@@ -46,8 +46,8 @@
         <!-- Pagination -->
         <div class="pagination text-center mt-4">
             <a th:href="'/' + ${category} + '?page='+ ${currentPage - 1}" th:if="${currentPage > 0}">Previous</a>
-            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPage - 1)}" 
-            th:classappend="${i == currentPage} ? 'active'">
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPage - 1)}" th:if="${totalPage} > 0"
+                th:classappend="${i == currentPage} ? 'active'">
                 <a class="page-link" th:href="'/'+ ${category}+'?page='+${i}" th:text="${i + 1}"></a>
             </li>
             <a th:href="'/' + ${category} + '?page='+ ${currentPage + 1}" th:if="${currentPage < totalPage - 1}">Next</a>
