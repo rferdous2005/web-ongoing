@@ -73,7 +73,7 @@ public class IncidentService {
                 e.printStackTrace();
             }
         }
-        String genId = "CIRT-INC-"+LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-")) + UUID.randomUUID().toString().substring(0, 4);
+        String genId = "CIRT-INC-"+LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-")) + UUID.randomUUID().toString().substring(0, 4).toUpperCase();
         incidentEntity.setGeneratedId(genId);
         incidentEntity.setFileName(filePath);
         incidentEntity = this.incidentRepository.save(incidentEntity);

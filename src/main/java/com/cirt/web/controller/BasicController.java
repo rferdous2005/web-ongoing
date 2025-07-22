@@ -60,7 +60,7 @@ public class BasicController {
 
     @Autowired
     ObjectMapper objectMapper;
-    private final int PAGE_SIZE = 5;
+    private final int PAGE_SIZE = 6;
 
     @GetMapping
     public String getMethodName(Model model) {

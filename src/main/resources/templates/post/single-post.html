@@ -24,7 +24,7 @@
             <section class="description col-md-9">
                 <h1 th:text="${post.getTitle()}"> </h1>
                 <p style="text-align: center;" th:text="'Published on '+${#temporals.format(post.getPublishedAt(), 'dd-MMM-yyyy HH:mm:ss')}"></p>
-                <div class="holder" th:utext="${post.body}"> </div>
+                <div class="holder" style="font-size: larger;" th:utext="${post.body}"> </div>
             </section>
 
             <!-- Right Side: Related Posts -->
