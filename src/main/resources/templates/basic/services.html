@@ -9,6 +9,25 @@
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/service-styles.css}">
   <link th:href="@{/assets/images/favicon.ico}" rel="icon">
+  <style>
+    p, li {
+      font-size: larger;
+    }
+    td {
+      font-size: larger;
+      border: 1px solid grey;
+      padding: 10px;
+    }
+    td li {
+      font-size: large;
+    }
+    th {
+      font-size: larger;
+      border: 1px solid black;
+      background-color: cornflowerblue;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
   <div th:replace="~{fragments/header :: menu}"></div>
@@ -21,6 +40,7 @@
       <!-- <a class="tab" href="#data-center" data-tab="data-center">Data Center Operations</a> -->
       <a class="tab" href="#cti" data-tab="cti">Cyber Threat Intelligence (CTI)</a>
       <a class="tab" href="#capacity" data-tab="capacity">Creating Awareness & Capacity Building</a>
+      <a class="tab" href="#catalog" data-tab="catalog">Service Catalog</a>
     </div>
   </div>
   <div id="vapt" class="tab-content active m-1">
@@ -59,7 +79,7 @@
     </ul>
   </div>
 
-  <div id="it-audit" class="tab-content m-1">
+  <div id="it-audit" class="tab-content m-3 p-3">
     <h2>IT Audit & Risk Assessment</h2>
     <h4>Overview</h4>
     <p>IT audits are conducted to identify vulnerabilities in the
@@ -75,7 +95,7 @@
     </ul>
 
     <h4>Service Flowchart</h4>
-    <p><img th:src="@{/assets/images/it-audit-flow.png}" /></p>
+    <p style="text-align: center;"><img th:src="@{/assets/images/it-audit-flow.png}" /></p>
   </div>
 
   <div id="forensics" class="tab-content m-1">
@@ -158,6 +178,221 @@
       <li>Advance attack and basic defense scenario simulation</li>
       <li>Hands on training on Kali OS</li>
     </ul>
+  </div>
+  <div id="catalog" class="tab-content m-1">
+    <h2>Service Catalog</h2>
+    <!-- <p style="text-align: center;"><img th:src="@{/assets/images/ss-service-catalog (2).png}" /></p>
+    <p style="text-align: center;"><img th:src="@{/assets/images/ss-service-catalog (3).png}" /></p>
+    <p style="text-align: center;"><img th:src="@{/assets/images/ss-service-catalog (4).png}" /></p>
+    <p style="text-align: center;"><img th:src="@{/assets/images/ss-service-catalog (5).png}" /></p>
+    <p style="text-align: center;"><img th:src="@{/assets/images/ss-service-catalog (6).png}" /></p> -->
+    <p>In order to accomplish its mission, BGD e-GOV CIRT will provide the following services to its constituents.</p>
+    <table style="width:80%;">
+      <thead>
+        <tr>
+          <th>Service Name</th>
+          <th>Package</th>
+          <th>Package Details</th>
+          <th>Service Charge<br>(Excl. VAT and TAX)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="3">Cyber Sensors Installation and Commissioning</th>
+          <td>CS_1G</td>
+          <td>One-unit Cyber sensor Installation and Commissioning -1G Interface Capacity (One Time)</td>
+          <td>12,000,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>CS_10G</td>
+          <td>One-unit Cyber sensor Installation and Commissioning – 10G interface capacity (One Time)</td>
+          <td>15,000,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>CS_SUPPORT</td>
+          <td>Operations, Maintenance, monthly sensor report one unit per month (Per month)</td>
+          <td>300,000.00 (Per month)</td>
+        </tr>
+        
+        <tr>
+          <th rowspan="4">Risk Assessment</th>
+          <td>RA_DHK_01</td>
+          <td>Risk assessment per Organization within Dhaka<div>Duration: 3 weeks minimum (5 days onsite &amp; 2 weeks offsite)</div></td>
+          <td>7,00,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>RA_OUTDHK_01</td>
+          <td>Risk assessment per Organization outside Dhaka<div>Duration: 3 weeks minimum (5 days onsite &amp; 2 weeks offsite)</div></td>
+          <td>9,00,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>RA_Training_Basic</td>
+          <td>Training on Basic Risk Assessment<div>Duration: 03 Working days<br>Maximum Participants: 10 Person<br>Venue: BGD e-GOV CIRT Premise</div></td>
+          <td>60,000.00 (One Time)</td>
+        </tr>
+          <tr>
+          <td>RA_Training_Advance</td>
+          <td>Training on Advanced Risk Assessment<div>Duration: 05 Working days<br>Maximum Participants: 10 Person<br>Venue: BGD e-GOV CIRT Premise</div></td>
+          <td>1,00,000.00 (One Time)</td>
+        </tr>
+          
+        <tr>
+          <th rowspan="4">Audit Assessment and Reporting</th>
+          <td>ITAUDIT_DHK_01</td>
+          <td>Audit assessment &amp; Reporting per Organization within Dhaka<div>Duration: 4 weeks minimum (5 days onsite &amp; 3 weeks offsite)</div></td>
+          <td>8,00,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>ITAUDIT_OUTDHK_01</td>
+          <td>Audit assessment per Organization outside Dhaka<div>Duration: 4 weeks minimum (5 days onsite &amp; 3 weeks offsite)</div></td>
+          <td>10,00,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>ITAUDIT_Training_Basic_DHK</td>
+          <td>Training on Basic Information Security and Process Audit (Without Global Certification)<div>Duration: 05 Working days<br>Maximum Participants: 10 Person<br>Venue: BGD e-GOV CIRT Premise</div></td>
+          <td>250,000.00 (One Time)</td>
+        </tr>
+          <tr>
+          <td>TAUDIT_Training_Basic_OutDHK </td>
+          <td>Training on Basic Information Security and Process Audit (Without Global Certification)<div>Duration: 05 Working days<br>Maximum Participants: 10 Person<br>Venue: Client Premise</div></td>
+          <td>350,000.00 (One Time)</td>
+        </tr>
+        
+        <tr>
+          <th rowspan="3">Vulnerability Assessment and Penetration Test</th>
+          <td>SERVER_VAPT</td>
+          <td>Vulnerability assessment and penetration test on server operating system. This is a black box test which doesn’t require user credential and this test will identify possible installed services, running services, open ports, service version detection, network communications, patch information etc</td>
+          <td>46,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>WEBSITE_VAPT</td>
+          <td>Vulnerability assessment and penetration test on website to detect possible vulnerabilities. This VAPT doesn’t require user credential. This test will identify web technologies and versions, SQL injection, Cross-site scripting, Unrestricted file upload, Web backdoor, Directory traversal etc.<div>Note: Each unique sub-domain will consider as domain.</div></td>
+          <td>1,11,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>WEB_APPLICATION_VAPT</td>
+          <td>Vulnerability assessment and penetration test on web application to detect possible vulnerabilities. This test may require web application user credential to conduct vulnerability assessment to detect SQL injection, Cross-site scripting, Unrestricted file upload, Local or remote file inclusion, Authentication bypass, Misconfiguration etc.<div>Note: Each unique sub-domain will consider as domain.</div></td>
+          <td>1,63,000.00 (One Time)</td>
+        </tr>
+        
+          <tr>
+          <th rowspan="4">Digital Forensic</th>
+          <td>COMPUTER_FORENSIC</td>
+          <td>Component: Computer Forensic
+      <div>Duration: Min 5 working days / case
+      <div>Description:
+      <ul><li>Evidence Detection</li>
+      <li>Evidence Acquisition</li>
+      <li>Evidence Analysis/Examination</li>
+      <li>Documenting and Reporting</li></ul></div></div></td>
+          <td>6,50,000.00 (Per CASE)</td>
+        </tr>
+        <tr>
+          <td>MOBILE_FORENSIC</td>
+          <td>Component: Mobile Forensic
+      <div>Duration: Min 7 working days / case
+      <div>Description:
+      <ul><li>Evidence Detection</li>
+      <li>Evidence Acquisition</li>
+      <li>Evidence Analysis/Examination</li>
+      <li>Documenting and Reporting</li></ul></div></div></td>
+          <td>4,00,000.00 (Per CASE)</td>
+        </tr>
+        <tr>
+          <td>FORENSIC_SUPPORT</td>
+          <td>Component: Forensic Support Service
+      <div>Duration: Min 2 MAN days
+      <div>Description:
+      <ul>
+      <li> On premise Forensic Technical Support</li>
+      <li>Technical support on Forensic Data
+      Acquisition</li>
+      <li>Technical support on Forensic Data
+      Analysis &amp; Reporting</li>
+      </ul>
+      <div>
+      Note: Forensic Tools are not included in
+      the service, Client must provide the
+      tools. For services including tools please
+      refer to COMPUTER_FORENSIC &amp; MOBILE_FORENSIC.</div></div></div></td>
+          <td>30,000.00
+      /Per 2 MAN
+      Days</td>
+        </tr>
+          <tr>
+          <td>FORENSIC_TRAINING</td>
+          <td>Component: Digital Forensics Training
+      <div>Duration: 3 days (3 hours per class) /
+      batch (total 9 hours minimum)
+      <br>Mode: On premise, hands on training.
+      <br>Tools: Open source.
+      <br>Participant: 20 persons / batch
+      <div>Note: participant’s stationary &amp; snacks
+      arranged by inviting authority.</div></div></td>
+          <td>22,500.00
+      /per batch</td>
+        </tr>
+        
+        
+        <tr>
+          <th rowspan="2">Cyber Security Training</th>
+          <td>Basic_Cyber_Security_Training</td>
+          <td>Component: Basic Cyber Security Training
+      <div>Duration: 3 working days
+      <div>Description:
+      <ul>
+      <li>Maximum 10 number of
+      participants</li>
+      <li>Basic attack and basic defense
+      scenario simulation</li>
+      <li>Basic cyber security awareness</li>
+      </ul>
+      </div>
+      </div></td>
+          <td>60,000.00 (One Time)</td>
+        </tr>
+        <tr>
+          <td>Advance_Cyber_Security_Training</td>
+          <td>Component: Advance Cyber Security
+      Training
+      <div>Duration: 5 working days
+      <div>Description:
+      <ul>
+      <li>Maximum 10 number of
+      participants</li>
+      <li>Advance attack and advance
+      defense scenario simulation</li>
+      <li>Hands on training on Kali</li></ul></div></div></td>
+          <td>95,000.00 (One Time)</td>
+        </tr>
+        
+          <tr>
+          <th>Cyber Threat
+      Intelligence</th>
+          <td>Cyber Threat Intelligence</td>
+          <td>Threat Intelligence will be
+      provided to the entities such as
+      Critical Information
+      Infrastructures, Banking and
+      Financial Institutions, Law
+      Enforcement Agencies etc.
+      <div>
+      <ul>
+      <li>Domain /entity based threat
+      received from multiple sources
+      will be provided on monthly basis.</li>
+      <li>Critical threat intelligence will be
+      shared as and when received.</li>
+      <li>This service is purely on
+      subscription basis.</li></ul></div></td>
+          <td>BDT 1,00,000
+      per month.
+      Minimum
+      Subscription
+      1year.</td>
+        </tr>
+      </tbody>
+      </table>
   </div>
 
   <div th:replace="~{fragments/footer :: footer}"></div>     
