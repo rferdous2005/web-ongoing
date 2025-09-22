@@ -65,8 +65,8 @@
           <input type="text" class="form-control" id="phone" placeholder="Mandatory" th:field="*{phone}" required>
         </div>
         <div class="mb-3">
-          <label for="phone" class="form-label">Region</label>
-          <select class="form-select" id="type" th:field="*{region}" required>
+          <label for="region" class="form-label">Region</label>
+          <select class="form-select" id="region" th:field="*{region}" required>
             <option value="">Choose...</option>
             <option value="Dhaka">Dhaka</option>
             <option value="Barisal">Barisal</option>
@@ -154,8 +154,8 @@
           <label for="attackVector" class="form-label">Attack Vector</label>
           <select class="form-select" th:field="*{attackVector}" id="attackVector" required>
             <option value="" >Choose...</option>
-            <option value="Domain">Email Attachment</option>
-            <option value="Server">Email Hyperlink</option>
+            <option value="Email Attachment">Email Attachment</option>
+            <option value="Email Hyperlink">Email Hyperlink</option>
             <option value="Web">Web</option>
             <option value="USB">USB</option>
             <option value="Insider">Insider</option>
@@ -183,10 +183,10 @@
           <label for="impact" class="form-label">Impact Assessment</label>
           <select class="form-select" th:field="*{impact}" id="impact" required>
             <option value="" disabled>Choose...</option>
-            <option value="Domain">Critical</option>
-            <option value="Server">Major</option>
-            <option value="Personal Desktop">Minor</option>
-            <option value="Personal Laptop">None</option>
+            <option value="Critical">Critical</option>
+            <option value="Major">Major</option>
+            <option value="Minor">Minor</option>
+            <option value="None">None</option>
           </select>
         </div>
         <div class="mb-3">

@@ -45,9 +45,8 @@ header p {
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border: 2px solid #0150b1; /* Highlight card border on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transform: scale(1.025);
 }
 
 .card-img-top {
@@ -70,7 +69,6 @@ header p {
 .card-title:hover {
     color: #4049ad; /* Darker green for hover effect */
     text-decoration: underline;
-    
 }
 
  .card-text {

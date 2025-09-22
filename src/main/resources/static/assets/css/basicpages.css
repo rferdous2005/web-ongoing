@@ -71,7 +71,7 @@ main {
     color: #273167;
 }
 
-.base_service h3 {
+.base_service > h3 {
     color: #273167;
     margin-top: 20px;
     font-size: 1.5rem;

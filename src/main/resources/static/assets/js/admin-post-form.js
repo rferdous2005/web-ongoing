@@ -40,7 +40,7 @@ function activateQuillEditor(elementID) {
 
 function clickedInsertImage() {
   var inputURL = prompt("Insert Img URL");
-  var htmlImgTag = `<br/><img src="${inputURL}" width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}" /><br/>`;
+  var htmlImgTag = `<img src="${inputURL}" width="${IMAGE_WIDTH}" height="${IMAGE_HEIGHT}" />`;
   range = quill.getSelection();
   quill.insertText(range.index, htmlImgTag);
 }

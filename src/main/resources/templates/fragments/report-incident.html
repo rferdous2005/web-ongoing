@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Report Incident Form</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
@@ -10,6 +11,8 @@
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/common.css}">
   <link th:href="@{/assets/images/favicon.ico}" rel="icon">
+  <script th:src="@{|https://www.google.com/recaptcha/api.js?render=${@recaptchaProperties.siteKey}|}" defer></script>
+
   <style>
     body {
       background-color: #f0f2f5;
@@ -17,147 +20,156 @@
     }
   </style>
 </head>
+
 <body>
   <div th:replace="~{fragments/header :: menu}"></div>
-<div class="form-wrapper">
-  <form id="incidentForm" th:action="@{/report-incident}" method="post" th:object="${incidentDto}" enctype="multipart/form-data" >
-    <div class="form-step active" data-step="1">
-      <div class="form-section">
-        <h5>Reporter Information</h5>
-        <div class="mb-3">
-          <label class="form-label">Reporting as:</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" th:field="*{reportType}" id="individualRadio" value="individual" checked>
-            <label class="form-check-label" for="individualRadio">Individual</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" th:field="*{reportType}" id="orgRadio" value="organization">
-            <label class="form-check-label" for="orgRadio">Organization</label>
-          </div>
-        </div>
-
-        <div id="individualFields">
+  <div class="form-wrapper">
+    <form id="incidentForm" th:action="@{/report-incident}" method="post" th:object="${incidentDto}"
+      enctype="multipart/form-data">
+      <div class="form-step active" data-step="1">
+        <div class="form-section">
+          <h5>Reporter Information</h5>
           <div class="mb-3">
-            <label for="name" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Your name" th:field="*{name}">
+            <label class="form-label">Reporting as:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" th:field="*{reportType}" id="individualRadio"
+                value="individual" checked>
+              <label class="form-check-label" for="individualRadio">Individual</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" th:field="*{reportType}" id="orgRadio" value="organization">
+              <label class="form-check-label" for="orgRadio">Organization</label>
+            </div>
           </div>
-        </div>
 
-        <div id="organizationFields" class="hidden">
-          <div class="mb-3">
-            <label for="orgName" class="form-label">Organization Name</label>
-            <input type="text" class="form-control" th:field="*{orgName}" id="orgName" placeholder="XYZ Ltd.">
+          <div id="individualFields">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Your name" th:field="*{name}">
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="contactPerson" class="form-label">Contact Person Name</label>
-            <input type="text" class="form-control" id="contactPerson" placeholder="Jane Doe" th:field="*{contactName}">
-          </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="email" class="form-label">Email Address</label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com" th:field="*{email}" required>
+          <div id="organizationFields" class="hidden">
+            <div class="mb-3">
+              <label for="orgName" class="form-label">Organization Name</label>
+              <input type="text" class="form-control" th:field="*{orgName}" id="orgName" placeholder="XYZ Ltd.">
+            </div>
+            <div class="mb-3">
+              <label for="contactPerson" class="form-label">Contact Person Name</label>
+              <input type="text" class="form-control" id="contactPerson" placeholder="Jane Doe"
+                th:field="*{contactName}">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com" th:field="*{email}"
+              required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="phone" placeholder="Mandatory" th:field="*{phone}" required>
+          </div>
+          <div class="mb-3">
+            <label for="region" class="form-label">Region</label>
+            <select class="form-select" id="region" th:field="*{region}" required>
+              <option value="">Choose...</option>
+              <option value="Dhaka">Dhaka</option>
+              <option value="Barisal">Barisal</option>
+              <option value="Chattogram">Chattogram</option>
+              <option value="Dinajpur">Dinajpur</option>
+              <option value="Khulna">Khulna</option>
+              <option value="Mymensingh">Mymensingh</option>
+              <option value="Rajshahi">Rajshahi</option>
+              <option value="Sylhet">Sylhet</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
         <div class="mb-3">
-          <label for="phone" class="form-label">Phone Number</label>
-          <input type="text" class="form-control" id="phone" placeholder="Mandatory" th:field="*{phone}" required>
-        </div>
-        <div class="mb-3">
-          <label for="phone" class="form-label">Region</label>
-          <select class="form-select" id="type" th:field="*{region}" required>
-            <option value="">Choose...</option>
-            <option value="Dhaka">Dhaka</option>
-            <option value="Barisal">Barisal</option>
-            <option value="Chattogram">Chattogram</option>
-            <option value="Dinajpur">Dinajpur</option>
-            <option value="Khulna">Khulna</option>
-            <option value="Mymensingh">Mymensingh</option>
-            <option value="Rajshahi">Rajshahi</option>
-            <option value="Sylhet">Sylhet</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="mb-3">
           <label for="location" class="form-label">Physical Location</label>
-          <textarea class="form-control" id="location" th:field="*{location}" rows="4" placeholder="The Address where Incident Taken place" required></textarea>
-      </div>
-      <div class="mb-3">
+          <textarea class="form-control" id="location" th:field="*{location}" rows="4"
+            placeholder="The Address where Incident Taken place" required></textarea>
+        </div>
+        <div class="mb-3">
           <label for="ip" class="form-label">Affected Domain and IP</label>
-          <input type="text" class="form-control" id="ip" th:field="*{domainIP}" placeholder="(If any) Format: 114.115.115.115 - www.example.com">
+          <input type="text" class="form-control" id="ip" th:field="*{domainIP}"
+            placeholder="(If any) Format: 114.115.115.115 - www.example.com">
+        </div>
+        <div class="mb-3">
+          <label for="fileUpload">Logs / Evidence Upload (Provide all the files within a .zip, .7z or .rar
+            format)</label>
+          <input type="file" class="form-control" id="fileUpload" th:field="*{files}" accept=".zip,.7z, .rar">
+        </div>
+        <div class="step-buttons">
+          <div id="errorMessage" style="color: red; font-weight: bold;"></div>
+          <button type="button" class="btn btn-primary next-btn">Next</button>
+        </div>
       </div>
-      <div class="mb-3">
-          <label for="fileUpload">Logs / Evidence Upload 	(Provide all the files within a .zip, .7z or .rar format)</label>
-          <input type="file" class="form-control" id="fileUpload" th:field="*{files}"  accept=".zip,.7z, .rar" >
-      </div>
-      <div class="step-buttons">
-        <div></div>
-        <button type="button" class="btn btn-primary next-btn">Next</button>
-      </div>
-    </div>
 
-    <div class="form-step" data-step="2">
-      <div class="form-section">
-        <h5>Incident Details</h5>
-        <div class="mb-3">
-          <label for="type" class="form-label">Type of Incident</label>
-          <select class="form-select" id="type" th:field="*{incidentType}" required>
-            <option value="">Choose...</option>
-            <option value="Phishing Email">Phishing Email</option>
-            <option value="Malware Infection">Malware Infection</option>
-            <option value="Unauthorized Access">Unauthorized Access</option>
-            <option value="Website Compromise">Website Compromise</option>
-            <option value="Denial of Service (DoS/DDoS)">Denial of Service (DoS/DDoS)</option>
-            <option value="Insider Threat">Insider Threat</option>
-            <option value="Data Breach / Leak">Data Breach / Leak</option>
-            <option value="Ransomware">Ransomware</option>
-            <option value="Website Defacement">Website defacement</option>            
-            <option value="Other">Other</option>
-            <option value="I don't know">I don't know</option>
-          </select>
+      <div class="form-step" data-step="2">
+        <div class="form-section">
+          <h5>Incident Details</h5>
+          <div class="mb-3">
+            <label for="type" class="form-label">Type of Incident</label>
+            <select class="form-select" id="type" th:field="*{incidentType}" required>
+              <option value="">Choose...</option>
+              <option value="Phishing Email">Phishing Email</option>
+              <option value="Malware Infection">Malware Infection</option>
+              <option value="Unauthorized Access">Unauthorized Access</option>
+              <option value="Website Compromise">Website Compromise</option>
+              <option value="Denial of Service (DoS/DDoS)">Denial of Service (DoS/DDoS)</option>
+              <option value="Insider Threat">Insider Threat</option>
+              <option value="Data Breach / Leak">Data Breach / Leak</option>
+              <option value="Ransomware">Ransomware</option>
+              <option value="Website Defacement">Website defacement</option>
+              <option value="Other">Other</option>
+              <option value="I don't know">I don't know</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" th:field="*{description}" id="description" rows="4"
+              placeholder="Briefly describe what happened..."></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Date of Incident</label>
+            <input type="datetime-local" th:field="*{incidentTime}" class="form-control" id="date">
+          </div>
+          <div class="mb-3">
+            <label for="affectedAsset" class="form-label">Affected System or Asset</label>
+            <select class="form-select" th:field="*{affectedAsset}" id="affectedAsset" required>
+              <option value="">Choose...</option>
+              <option value="Domain">Domain</option>
+              <option value="Server">Server</option>
+              <option value="Personal Desktop">Personal Desktop</option>
+              <option value="Personal Laptop">Personal Laptop</option>
+              <option value="Smartphone / Mobile Device">Smartphone / Mobile Device</option>
+              <option value="Public Website">Public Website</option>
+              <option value="Database">Database</option>
+              <option value="Other">Other</option>
+              <option value="I am not sure">I am not sure</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="discovery" class="form-label">How was the Incident Discovered?</label>
+            <select class="form-select" th:field="*{discovery}" id="discovery" required>
+              <option value="">Choose...</option>
+              <option value="Monitoring">Monitoring</option>
+              <option value="Alert Service">Alert Service</option>
+              <option value="User Report">User Report</option>
+              <option value="Log Report">Log Report</option>
+              <option value="Other">Other</option>
+              <option value="I don't know">I don't know</option>
+            </select>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea class="form-control" th:field="*{description}" id="description" rows="4" placeholder="Briefly describe what happened..."></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="date" class="form-label">Date of Incident</label>
-          <input type="datetime-local" th:field="*{incidentTime}"  class="form-control" id="date">
-        </div>
-        <div class="mb-3">
-          <label for="affectedAsset" class="form-label">Affected System or Asset</label>
-          <select class="form-select" th:field="*{affectedAsset}" id="affectedAsset" required>
-            <option value="">Choose...</option>
-            <option value="Domain">Domain</option>
-            <option value="Server">Server</option>
-            <option value="Personal Desktop">Personal Desktop</option>
-            <option value="Personal Laptop">Personal Laptop</option>
-            <option value="Smartphone / Mobile Device">Smartphone / Mobile Device</option>
-            <option value="Public Website">Public Website</option>
-            <option value="Database">Database</option>       
-            <option value="Other">Other</option>
-            <option value="I am not sure">I am not sure</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="discovery" class="form-label">How was the Incident Discovered?</label>
-          <select class="form-select" th:field="*{discovery}" id="discovery" required>
-            <option value="">Choose...</option>
-            <option value="Monitoring">Monitoring</option>
-            <option value="Alert Service">Alert Service</option>
-            <option value="User Report">User Report</option>
-            <option value="Log Report">Log Report</option>    
-            <option value="Other">Other</option>
-            <option value="I don't know">I don't know</option>
-          </select>
-        </div>
-      </div>
         <div class="mb-3">
           <label for="attackVector" class="form-label">Attack Vector</label>
           <select class="form-select" th:field="*{attackVector}" id="attackVector" required>
-            <option value="" >Choose...</option>
-            <option value="Domain">Email Attachment</option>
-            <option value="Server">Email Hyperlink</option>
+            <option value="">Choose...</option>
+            <option value="Email Attachment">Email Attachment</option>
+            <option value="Email Hyperlink">Email Hyperlink</option>
             <option value="Web">Web</option>
             <option value="USB">USB</option>
             <option value="Insider">Insider</option>
@@ -166,7 +178,7 @@
             <option value="Other">Other</option>
           </select>
         </div>
-      <div class="mb-3">
+        <div class="mb-3">
           <label class="form-label">Is the Incident Ongoing?</label>
           <div class="form-check">
             <input class="form-check-input" type="radio" th:field="*{ongoing}" id="ongoingYes" value="Yes" checked>
@@ -181,63 +193,95 @@
             <label class="form-check-label" for="ongoingNotSure">Not Sure</label>
           </div>
         </div>
-      <div class="mb-3">
+        <div class="mb-3">
           <label for="impact" class="form-label">Impact Assessment</label>
           <select class="form-select" th:field="*{impact}" id="impact" required>
             <option value="" disabled>Choose...</option>
-            <option value="Domain">Critical</option>
-            <option value="Server">Major</option>
-            <option value="Personal Desktop">Minor</option>
-            <option value="Personal Laptop">None</option>
+            <option value="Critical">Critical</option>
+            <option value="Major">Major</option>
+            <option value="Minor">Minor</option>
+            <option value="None">None</option>
           </select>
         </div>
         <div class="mb-3">
           <label for="stepsTaken" class="form-label">Steps Already Taken</label>
-          <textarea class="form-control" id="stepsTaken" th:field="*{stepsTaken}" rows="4" placeholder="Please describe what are the containments or mitigations done till now"></textarea>
+          <textarea class="form-control" id="stepsTaken" th:field="*{stepsTaken}" rows="4"
+            placeholder="Please describe what are the containments or mitigations done till now"></textarea>
         </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="Captcha">
-        <label class="form-check-label" for="Captcha">Captcha Input</label>
+        <!-- <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="Captcha">
+          <label class="form-check-label" for="Captcha">Captcha Input</label>
+        </div> -->
+        <div class="mb-3">
+          <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+          <input type="hidden" name="recaptcha-action" value="incident_submit">
+        </div>
+        <div class="step-buttons">
+          <button type="button" class="btn btn-secondary prev-btn">Back</button>
+          <button type="submit" class="btn-cirt">Submit Incident Details</button>
+        </div>
       </div>
-      <div class="step-buttons">
-        <button type="button" class="btn btn-secondary prev-btn">Back</button>
-        <button type="submit" class="btn-cirt">Submit Incident Details</button>
-      </div>
-    </div>
-  </form>
-</div>
-<div th:replace="~{fragments/footer :: footer}"></div>     
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function () {
-    let currentStep = 1;
+    </form>
+  </div>
+  <div th:replace="~{fragments/footer :: footer}"></div>
+  <script th:inline="javascript">
+    const siteKey = /*[[${@recaptchaProperties.siteKey}]]*/ '';
+    const form = document.getElementById('incidentForm');
 
-    function showStep(step) {
-      $('.form-step').removeClass('active');
-      $(`.form-step[data-step="${step}"]`).addClass('active');
-    }
-
-    $('.next-btn').click(function () {
-      currentStep++;
-      showStep(currentStep);
+    form.addEventListener('submit', function (e) {
+      // prevent immediate submit; fetch reCAPTCHA token first
+      e.preventDefault();
+      grecaptcha.ready(function () {
+        grecaptcha.execute(siteKey, { action: 'incident_submit' })
+          .then(function (token) {
+            document.getElementById('g-recaptcha-response').value = token;
+            form.submit(); // now actually submit
+          })
+          .catch(function () {
+            // As a fallback, submit anyway (or block, your call)
+            //form.submit();
+          });
+      });
     });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      let currentStep = 1;
 
-    $('.prev-btn').click(function () {
-      currentStep--;
-      showStep(currentStep);
-    });
-
-    $('input[name="reportType"]').on('change', function () {
-      if ($('#individualRadio').is(':checked')) {
-        $('#individualFields').removeClass('hidden');
-        $('#organizationFields').addClass('hidden');
-      } else {
-        $('#individualFields').addClass('hidden');
-        $('#organizationFields').removeClass('hidden');
+      function showStep(step) {
+        $('.form-step').removeClass('active');
+        $(`.form-step[data-step="${step}"]`).addClass('active');
       }
+
+      $('.next-btn').click(function () {
+        //fill all form fields
+        let filled = $("#email").val() && $("#phone").val() && $("#region").val() && $("#location").val();
+        if(!filled) {
+          $("#errorMessage").text("* Please fill all the mandatory fields to go to the next step *");
+          return ;
+        }
+        currentStep++;
+        showStep(currentStep);
+      });
+
+      $('.prev-btn').click(function () {
+        currentStep--;
+        showStep(currentStep);
+      });
+
+      $('input[name="reportType"]').on('change', function () {
+        if ($('#individualRadio').is(':checked')) {
+          $('#individualFields').removeClass('hidden');
+          $('#organizationFields').addClass('hidden');
+        } else {
+          $('#individualFields').addClass('hidden');
+          $('#organizationFields').removeClass('hidden');
+        }
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>

@@ -40,7 +40,7 @@ public class IncidentService {
         Incident incidentEntity = new Incident();
         incidentEntity.setAffectedAsset(incidentDto.getAffectedAsset());
         incidentEntity.setAttackVector(incidentDto.getAttackVector());
-        incidentEntity.setContactName(incidentDto.getAttackVector());
+        incidentEntity.setContactName(incidentDto.getContactName());
         incidentEntity.setDescription(incidentDto.getDescription());
         incidentEntity.setDiscovery(incidentDto.getDiscovery());
         incidentEntity.setDomainIP(incidentDto.getDomainIP());

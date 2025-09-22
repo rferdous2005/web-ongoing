@@ -31,9 +31,8 @@ body {
   }
 
   .post-item:hover {
-    transform: translateY(-2px);
+    transform: scale(1.025);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    border-color: #ccc;
   }
 
   .thumbnail {
@@ -56,10 +55,8 @@ body {
     color: #222;
     margin-bottom: 0.3rem;
     transition: color 0.3s;
-  }
-
-  .post-item:hover .post-title {
     color: #3636b2;
+    text-decoration: none;
   }
 
   .post-subtitle {

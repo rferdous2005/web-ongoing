@@ -20,6 +20,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,6 +37,7 @@ import com.cirt.web.entity.Post;
 import com.cirt.web.repository.MediaRepository;
 import com.cirt.web.service.IncidentService;
 import com.cirt.web.service.PostService;
+import com.cirt.web.service.RecaptchaService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -43,7 +45,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 
 @Controller
 @RequestMapping
@@ -53,7 +54,11 @@ public class BasicController {
     @Autowired
     MediaRepository mediaRepository;
     @Autowired
+    RecaptchaService recaptchaService;
+    @Autowired
     PostService postService;
+    private final List<String> acceptedDirectories = List.of(".docx", ".pdf", ".jpg", ".jpeg", ".zip", ".png",
+            "incident");
 
     @Autowired
     IncidentService incidentService;
@@ -65,19 +70,22 @@ public class BasicController {
     @GetMapping
     public String getMethodName(Model model) {
 
-        Page<Post> alertsList = postService.getPaginatedPostsForPublic("alerts", PageRequest.of(0, 3, Sort.by(Sort.Direction.DESC, "publishedAt")));
-        Page<Post> magazinesList = postService.getPaginatedPostsForPublic("magazines", PageRequest.of(0, PAGE_SIZE, Sort.by(Sort.Direction.DESC, "publishedAt")));
-        Page<Post> newsList = postService.getPaginatedPostsForPublic("news", PageRequest.of(0, 6, Sort.by(Sort.Direction.DESC, "publishedAt")));
+        Page<Post> alertsList = postService.getPaginatedPostsForPublic("alerts",
+                PageRequest.of(0, 3, Sort.by(Sort.Direction.DESC, "publishedAt")));
+        Page<Post> magazinesList = postService.getPaginatedPostsForPublic("magazines",
+                PageRequest.of(0, PAGE_SIZE, Sort.by(Sort.Direction.DESC, "publishedAt")));
+        Page<Post> newsList = postService.getPaginatedPostsForPublic("news",
+                PageRequest.of(0, 6, Sort.by(Sort.Direction.DESC, "publishedAt")));
         // if(alertsList.getTotalElements() == 0) {
-        //     model.addAttribute("postList", new LinkedList<>());
+        // model.addAttribute("postList", new LinkedList<>());
         // } else {
-        //     model.addAttribute("postList", postListPaged.getContent());
+        // model.addAttribute("postList", postListPaged.getContent());
         // }
         Homepage homepageContent = this.postService.getOnlyOneHomepageContent();
         List<HighlightsDto> highlightsDtos = new ArrayList<>();
         try {
             JsonNode arrayNode = objectMapper.readTree(homepageContent.getHighlights());
-            for(JsonNode jsonNode: arrayNode) {
+            for (JsonNode jsonNode : arrayNode) {
                 HighlightsDto highlightsDto = new HighlightsDto();
                 highlightsDto.setTitle(jsonNode.get("title").asText());
                 highlightsDto.setBody(jsonNode.get("body").asText());
@@ -90,7 +98,9 @@ public class BasicController {
             e.printStackTrace();
         }
         model.addAttribute("warningLabel", homepageContent.getWarningLabel().split("\\|")[0]);
-        model.addAttribute("warningColorStyle", "margin-left: 1.5rem; animation: warningpulse 1.5s infinite;color: #000;border-left: 55px solid "+homepageContent.getWarningColor());
+        model.addAttribute("warningColorStyle",
+                "margin-left: 1.5rem; animation: warningpulse 1.5s infinite;color: #000;border-left: 55px solid "
+                        + homepageContent.getWarningColor());
         model.addAttribute("highlights", highlightsDtos);
         model.addAttribute("alertsList", alertsList);
         model.addAttribute("magazinesList", magazinesList);
@@ -98,7 +108,7 @@ public class BasicController {
         // latest news or events
         return "home";
     }
-    
+
     @GetMapping("/who-we-are")
     public String getIntroWho() {
         return "basic/who";
@@ -113,15 +123,19 @@ public class BasicController {
     public String getIntroMisVis() {
         return "basic/mis-vis";
     }
-    
+
     @GetMapping("/media")
-    public void viewFile(HttpServletResponse response, HttpServletRequest request, @RequestParam("id") String fileName) throws Exception {
-        File file = new File( UPLOAD_DIR + fileName);
+    public void viewFile(HttpServletResponse response, HttpServletRequest request, @RequestParam("id") String fileName)
+            throws Exception {
+        File file = new File(UPLOAD_DIR + fileName);
+
+        if (!acceptedDirectories.contains(fileName.split("/")[0]) || fileName.split("/").length > 2)
+            return;
+
         FileInputStream inStream = new FileInputStream(file);
         // gets MIME type of the file
         String mimeType = "application/octet-stream";
         OutputStream outStream = response.getOutputStream();
-
 
         // modifies response
         response.setContentType(mimeType);
@@ -156,12 +170,30 @@ public class BasicController {
     @GetMapping("/report-incident")
     public String reportIncidentForm(Model model, HttpServletRequest request) {
         IncidentDto incidentDto = new IncidentDto();
+        incidentDto.setReportType("individual");
         model.addAttribute("incidentDto", incidentDto);
         return "fragments/report-incident";
     }
 
     @PostMapping("/report-incident")
-    public String reportIncidentSave(Model model, @ModelAttribute("incidentDto") IncidentDto incidentDto, HttpServletRequest request) {
+    public String reportIncidentSave(Model model, @ModelAttribute("incidentDto") IncidentDto incidentDto,
+            BindingResult br, HttpServletRequest request) {
+        String token = request.getParameter("g-recaptcha-response");
+        String action = request.getParameter("recaptcha-action"); // "incident_submit"
+
+        var result = recaptchaService.verify(token, request.getRemoteAddr());
+        boolean ok = result != null
+                && result.success()
+                && "incident_submit".equals(result.action())
+                && result.score() != null
+                && result.score() >= 0.7f; // adjust threshold if needed
+
+        if (!ok) {
+            br.reject("recaptcha.invalid", "Please verify you’re not a bot.");
+            // ensure Step 2 stays open if you use step logic:
+            model.addAttribute("step", 2);
+            return "fragments/report-incident"; // your Thymeleaf view name
+        }
         this.incidentService.saveIncident(incidentDto);
         return "fragments/incident-success";
     }
