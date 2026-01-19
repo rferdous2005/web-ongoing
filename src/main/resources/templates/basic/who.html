@@ -6,6 +6,7 @@
   <title>Who We Are</title>
   <!-- Stylesheets -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
   <link rel="stylesheet" th:href="@{/assets/css/header-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/footer-styles.css}">
   <link rel="stylesheet" th:href="@{/assets/css/basicpages.css}">
@@ -27,9 +28,9 @@
       </div>
   </header>
   <div class="container mt-2">
-    <a class="btn btn-lg btn-primary"> What We Do </a>
-    <a class="btn btn-lg btn-primary"> Mission & Vision </a>
-    <a class="btn btn-lg btn-primary"> TLP </a>
+    <a class="btn btn-lg btn-primary" href="/what-we-do"> What We Do </a>
+    <a class="btn btn-lg btn-primary" href="/mission-vision"> Mission & Vision </a>
+    <a class="btn btn-lg btn-primary" href="/tlp"> TLP </a>
   </div>
   
   <main>
@@ -43,7 +44,7 @@
           <p>
               As the designated <strong>National Computer Emergency Response Team (N-CERT), </strong> we operate under the 
               <strong> Bangladesh Computer Council (BCC) </strong>, and are governed by the 
-              <strong> Cyber Security Ordinance 2025. </strong> Our mandate is to defend Bangladesh’s digital backbone and ensure the resilience of its critical information infrastructures.
+              <strong> Cyber Safety Ordinance 2025. </strong> Our mandate is to defend Bangladesh’s digital backbone and ensure the resilience of its critical information infrastructures.
           </p>
   
           <h3>Collaboration & Recognition</h3>
@@ -77,9 +78,9 @@
   </main>
 
   <div class="container mb-2">
-    <a class="btn btn-lg btn-primary"> What We Do </a>
-    <a class="btn btn-lg btn-primary"> Mission & Vision </a>
-    <a class="btn btn-lg btn-primary"> TLP </a>
+    <a class="btn btn-lg btn-primary" href="/what-we-do"> What We Do </a>
+    <a class="btn btn-lg btn-primary" href="/mission-vision"> Mission & Vision </a>
+    <a class="btn btn-lg btn-primary" href="/tlp"> TLP </a>
   </div>
   <div th:replace="~{fragments/footer :: footer}"></div>
 

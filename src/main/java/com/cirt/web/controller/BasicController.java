@@ -38,6 +38,7 @@ import com.cirt.web.repository.MediaRepository;
 import com.cirt.web.service.IncidentService;
 import com.cirt.web.service.PostService;
 import com.cirt.web.service.RecaptchaService;
+import com.cirt.web.service.RecaptchaService.VerifyRes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -181,7 +182,7 @@ public class BasicController {
         String token = request.getParameter("g-recaptcha-response");
         String action = request.getParameter("recaptcha-action"); // "incident_submit"
 
-        var result = recaptchaService.verify(token, request.getRemoteAddr());
+        VerifyRes result = recaptchaService.verify(token, request.getRemoteAddr());
         boolean ok = result != null
                 && result.success()
                 && "incident_submit".equals(result.action())
@@ -202,4 +203,10 @@ public class BasicController {
     public String showTlpPage(Model model, HttpServletRequest request) {
         return "basic/tlp";
     }
+
+    @GetMapping("/cve-info")
+    public String showCVEPage(Model model) {
+        return "basic/cve";
+    }
+    
 }

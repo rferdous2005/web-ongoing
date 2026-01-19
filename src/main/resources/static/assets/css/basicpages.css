@@ -25,6 +25,14 @@ body {
     letter-spacing: 1px;
 }
 
+.container h2 {
+    margin-top: 20px;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
 /* Main Content */
 main {
     max-width: 1200px;
