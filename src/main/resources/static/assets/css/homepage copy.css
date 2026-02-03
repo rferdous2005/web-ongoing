@@ -1,11 +1,14 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #f9f9f9;
-  overflow-x: hidden;
 }
 
 .hesec-hero {
@@ -195,19 +198,6 @@ button:focus {
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
 
-.pioneer-badge {
-  min-height: 40px;              /* 🔑 equal vertical space */
-  display: flex;
-  justify-content: center;       /* 🔑 horizontal centering */
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.pioneer-badge .badge {
-  white-space: nowrap;           /* prevents line breaks */
-  padding: 6px 12px;
-  font-size: 0.85rem;
-}
 .show-more:hover {
   background: #0056b3;
   transform: translateY(-3px) scale(1.05);
@@ -216,10 +206,6 @@ button:focus {
 
 .leaders-face {
   border-radius: 200px;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;      /* 🔑 this is the magic */
-  object-position: center;
 }
 
 .show-more:active {
@@ -240,8 +226,7 @@ body {
 }
 
 .header {
-  min-height: 400px;
-  height: auto;
+  height: 400px;
   background-color: #3636b2;
   color: white;
   padding: 2rem;
@@ -467,22 +452,13 @@ h2 {
     max-width: 100%;
   }
 
-  .slider {
-    flex-wrap: wrap;
-    transform: none !important;
-  }
-
-  .nav-arrows {
-    display: none;
-  }
   .service-item {
     width: 150px;
     padding: 1rem;
   }
 
   .service-item img {
-    max-width: 100%;
-    height: auto;
+    width: 40px;
   }
 }
 

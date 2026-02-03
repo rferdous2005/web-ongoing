@@ -25,8 +25,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final AppAuthEntryPoint appAuthEntryPoint;
-    private final AppAccessDeniedHandler AppAccessDeniedHandler;
+    private AppAuthEntryPoint appAuthEntryPoint;
+    private AppAccessDeniedHandler appAccessDeniedHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
